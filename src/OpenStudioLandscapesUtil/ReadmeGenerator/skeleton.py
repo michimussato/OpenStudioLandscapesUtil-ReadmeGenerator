@@ -22,6 +22,7 @@ References:
 
 import argparse
 import logging
+import os
 import pathlib
 import sys
 import snakemd
@@ -51,6 +52,8 @@ def generate_readme():
     Returns:
       str: Path to README.md file
     """
+
+    print(os.getcwd())
 
     cf = ConfigParser()
     cf.read('setup.cfg')
@@ -823,7 +826,7 @@ def main(args):
     args = parse_args(args)
     setup_logging(args.loglevel)
     _logger.debug("Starting crazy calculations...")
-    print(f"The {args.n}-th Fibonacci number is {fib(args.n)}")
+    generate_readme()
     _logger.info("Script ends here")
 
 

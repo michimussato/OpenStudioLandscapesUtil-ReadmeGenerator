@@ -47,7 +47,7 @@ _logger = logging.getLogger(__name__)
 # when using this Python module as a library.
 
 
-def generate_readme():
+def generate_readme(versions):
     """Fibonacci example function
 
     Args:
@@ -55,6 +55,8 @@ def generate_readme():
     Returns:
       str: Path to README.md file
     """
+
+    print(versions)
 
     print(os.getcwd())
 
@@ -802,6 +804,17 @@ def parse_args(args):
         action="store_const",
         const=logging.DEBUG,
     )
+
+    parser.add_argument(
+        # "-vv",
+        # https://stackoverflow.com/questions/15753701/how-can-i-pass-a-list-as-a-command-line-argument-with-argparse
+        "--versions",
+        dest="versions",
+        nargs='+',
+        help="Python version(s) to for testing",
+        required=True,
+    )
+
     return parser.parse_args(args)
 
 
@@ -830,7 +843,7 @@ def main(args):
     args = parse_args(args)
     setup_logging(args.loglevel)
     _logger.debug("Starting crazy calculations...")
-    generate_readme()
+    generate_readme(args.versions)
     _logger.info("Script ends here")
 
 

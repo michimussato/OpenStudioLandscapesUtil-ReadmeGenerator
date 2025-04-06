@@ -47,7 +47,9 @@ _logger = logging.getLogger(__name__)
 # when using this Python module as a library.
 
 
-def generate_readme(versions):
+def generate_readme(
+        versions: list[str],
+):
     """Fibonacci example function
 
     Args:
@@ -56,9 +58,9 @@ def generate_readme(versions):
       str: Path to README.md file
     """
 
-    print(versions)
-
-    print(os.getcwd())
+    # print(versions)
+    #
+    # print(os.getcwd())
 
     cf = ConfigParser()
     cf.read('setup.cfg')
@@ -77,12 +79,18 @@ def generate_readme(versions):
     # except ImportError as e:
     #     raise ImportError(f"No 'constants' found for module named '{namespace}.{package}'") from e
 
-    readme = _generator(constants=constants)
+    readme = _generator(
+        constants=constants,
+        python_versions=versions,
+    )
 
     return readme.as_posix()
 
 
-def _generator(constants) -> pathlib.Path:
+def _generator(
+        constants,
+        python_versions: list[str],
+) -> pathlib.Path:
 
     rel_path = pathlib.Path(constants.__file__)
     parts_ = rel_path.parts
@@ -460,13 +468,14 @@ def _generator(constants) -> pathlib.Path:
     )
 
     # Todo
-    #  - [ ] make this dynamic (could be achieved by packaging this up into a CLI and then
+    #  - [x] make this dynamic (could be achieved by packaging this up into a CLI and then
     #        call it from nox)
     doc.add_unordered_list(
-        [
-            "`python3.11`",
-            "`python3.12`",
-        ]
+        sorted([f"`python{i}`" for i in python_versions])
+        # [
+        #     "`python3.11`",
+        #     "`python3.12`",
+        # ]
     )
 
     ## Variables

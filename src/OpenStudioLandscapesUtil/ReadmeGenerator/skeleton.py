@@ -25,7 +25,10 @@ import logging
 import os
 import pathlib
 import sys
+import importlib
+import textwrap
 import snakemd
+
 from configparser import ConfigParser
 
 from OpenStudioLandscapesUtil.ReadmeGenerator import __version__
@@ -61,15 +64,16 @@ def generate_readme():
     namespace = cf['pyscaffold']['namespace']
     package = cf['pyscaffold']['package']
 
-    constants = None
-    try:
-        exec(f"from {namespace}.{package} import constants")
-        if constants is None:
-            raise ImportError
-    except ModuleNotFoundError as e:
-        raise ModuleNotFoundError(f"No 'constants' found for module named '{namespace}.{package}'") from e
-    except ImportError as e:
-        raise ImportError(f"No 'constants' found for module named '{namespace}.{package}'") from e
+    constants = importlib.import_module(f'{namespace}.{package}.constants')
+
+    # try:
+    #     # exec(f"from {namespace}.{package} import constants")
+    #     if constants is None:
+    #         raise ImportError
+    # except ModuleNotFoundError as e:
+    #     raise ModuleNotFoundError(f"No 'constants' found for module named '{namespace}.{package}'") from e
+    # except ImportError as e:
+    #     raise ImportError(f"No 'constants' found for module named '{namespace}.{package}'") from e
 
     readme = _generator(constants=constants)
 
@@ -474,7 +478,7 @@ def _generator(constants) -> pathlib.Path:
         text=textwrap.dedent(
             f"""
             The following variables are being declared in 
-            [`{constants._module}`]({gh_prefix}{gh_path_constants}) published throuhout the `{repo_}` package.
+            [`{constants._module}`]({gh_prefix}{gh_path_constants}) published throughout the `{repo_}` package.
             """
         )
     )

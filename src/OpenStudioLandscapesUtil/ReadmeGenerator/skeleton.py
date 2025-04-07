@@ -71,6 +71,8 @@ def generate_readme(
     # Todo:
     #  - [ ] add the importable package name to setup.cfg metadata instead
     #        of fetching it from pyscaffold
+    #  - [ ] Deadline-10-2-Worker has "Deadline-10-2-Worker" in PyScaffold (incorrect?)
+    #  - [ ] Deadline-10-2 has "Deadline_10_2" in PyScaffold (correct)
     package = cf['pyscaffold']['package'].replace("-", "_")
 
     constants = importlib.import_module(f'{namespace}.{package}.constants')

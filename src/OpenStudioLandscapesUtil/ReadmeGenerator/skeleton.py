@@ -506,7 +506,8 @@ def _generator(
         text=textwrap.dedent(
             f"""
             SBOMs for the different Python interpreters defined in [`.noxfile.VERSIONS`]({gh_prefix}{gh_path_noxfile}) 
-            will be created in [`.sbom`]({gh_prefix}{gh_path_sbom})
+            will be created in the [`.sbom`]({gh_prefix}{gh_path_sbom}) directory of
+            this repository.
             """
         )
     )

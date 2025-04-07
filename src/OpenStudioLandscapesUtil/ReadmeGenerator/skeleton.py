@@ -68,7 +68,10 @@ def generate_readme(
     cf.read('setup.cfg')
 
     namespace = cf['pyscaffold']['namespace']
-    package = cf['pyscaffold']['package']
+    # Todo:
+    #  - [ ] add the importable package name to setup.cfg metadata instead
+    #        of fetching it from pyscaffold
+    package = cf['pyscaffold']['package'].replace("-", "_")
 
     constants = importlib.import_module(f'{namespace}.{package}.constants')
 

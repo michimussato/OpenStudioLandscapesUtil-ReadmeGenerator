@@ -69,8 +69,7 @@ def generate_readme(
 
     namespace = cf['pyscaffold']['namespace']
     # Todo:
-    #  - [ ] add the importable package name to setup.cfg metadata instead
-    #        of fetching it from pyscaffold
+    #  - [ ] remove the .replace()-hack
     #  - [ ] Deadline-10-2-Worker has "Deadline-10-2-Worker" in PyScaffold (incorrect?)
     #  - [ ] Deadline-10-2 has "Deadline_10_2" in PyScaffold (correct)
     package = cf['pyscaffold']['package'].replace("-", "_")

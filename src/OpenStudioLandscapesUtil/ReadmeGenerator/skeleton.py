@@ -387,6 +387,13 @@ def _generator(
         level=3,
     )
 
+    #### Generate Report
+
+    doc.add_heading(
+        text="Generate Report",
+        level=4,
+    )
+
     doc.add_code(
         code=textwrap.dedent(
             """
@@ -396,16 +403,57 @@ def _generator(
         lang="shell",
     )
 
-    ### Pylint
+    #### Re-Generate this README
+
+    doc.add_heading(
+        text="Re-Generate this README",
+        level=4,
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            """
+            nox --session readme
+            """
+        ),
+        lang="shell",
+    )
+
+    #### Generate Sphinx Documentation
+
+    doc.add_heading(
+        text="Generate Sphinx Documentation",
+        level=4,
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            """
+            nox --session docs
+            """
+        ),
+        lang="shell",
+    )
+
+    #### Pylint
 
     doc.add_heading(
         text="pylint",
-        level=3,
+        level=4,
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            """
+            nox --session lint
+            """
+        ),
+        lang="shell",
     )
 
     doc.add_heading(
         text="pylint: disable=redefined-outer-name",
-        level=4,
+        level=5,
     )
 
     doc.add_unordered_list(
@@ -414,11 +462,11 @@ def _generator(
         ]
     )
 
-    ### SBOM
+    #### SBOM
 
     doc.add_heading(
         text="SBOM",
-        level=3,
+        level=4,
     )
 
     doc.add_paragraph(
@@ -427,6 +475,15 @@ def _generator(
             Acronym for Software Bill of Materials
             """
         )
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            """
+            nox --session sbom
+            """
+        ),
+        lang="shell",
     )
 
     doc.add_paragraph(

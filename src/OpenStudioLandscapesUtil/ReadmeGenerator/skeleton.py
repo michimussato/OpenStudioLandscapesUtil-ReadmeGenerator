@@ -60,10 +60,6 @@ def generate_readme(
       str: Path to README.md file
     """
 
-    # print(versions)
-    #
-    # print(os.getcwd())
-
     cf = ConfigParser()
     cf.read('setup.cfg')
 
@@ -71,15 +67,6 @@ def generate_readme(
     package = cf['pyscaffold']['package']
 
     constants = importlib.import_module(f'{namespace}.{package}.constants')
-
-    # try:
-    #     # exec(f"from {namespace}.{package} import constants")
-    #     if constants is None:
-    #         raise ImportError
-    # except ModuleNotFoundError as e:
-    #     raise ModuleNotFoundError(f"No 'constants' found for module named '{namespace}.{package}'") from e
-    # except ImportError as e:
-    #     raise ImportError(f"No 'constants' found for module named '{namespace}.{package}'") from e
 
     readme = _generator(
         constants=constants,

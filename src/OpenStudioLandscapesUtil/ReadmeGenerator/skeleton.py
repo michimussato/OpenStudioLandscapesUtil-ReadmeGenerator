@@ -52,9 +52,12 @@ _logger = logging.getLogger(__name__)
 def generate_readme(
         versions: list[str],
 ):
-    """Fibonacci example function
+    """Entry point to generate the Readme file
+    for a given OpenStudioLandscapes module
+    taking Python versions as argument
 
     Args:
+      versions: list of versions
 
     Returns:
       str: Path to README.md file

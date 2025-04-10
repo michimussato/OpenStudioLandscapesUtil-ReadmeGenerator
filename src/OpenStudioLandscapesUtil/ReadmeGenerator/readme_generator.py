@@ -291,7 +291,7 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             """
-            cd .features
+            pushd .features || exit
             
             for dir in */; do
                 pushd "${dir}" || exit
@@ -302,6 +302,8 @@ def _generator(
                     
                 popd || exit
             done;
+            
+            popd || exit
             """
         ),
         lang="shell",
@@ -361,9 +363,11 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            cd .features/{repo_}
+            pushd .features/{repo_} || exit
             
             pre-commit install
+            
+            popd || exit
             """
         ),
         lang="shell",
@@ -386,9 +390,11 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            cd .features/{repo_}
+            pushd .features/{repo_} || exit
             
             nox --no-error-on-missing-interpreters --report .nox/nox-report.json
+            
+            popd || exit
             """
         ),
         lang="shell",
@@ -404,9 +410,11 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            cd .features/{repo_}
+            pushd .features/{repo_} || exit
             
             nox --session readme
+            
+            popd || exit
             """
         ),
         lang="shell",
@@ -422,9 +430,11 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            cd .features/{repo_}
+            pushd .features/{repo_} || exit
             
             nox --session docs
+            
+            popd || exit
             """
         ),
         lang="shell",
@@ -440,9 +450,11 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            cd .features/{repo_}
+            pushd .features/{repo_} || exit
             
             nox --session lint
+            
+            popd || exit
             """
         ),
         lang="shell",
@@ -477,9 +489,11 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            cd .features/{repo_}
+            pushd .features/{repo_} || exit
             
             nox --session sbom
+            
+            popd || exit
             """
         ),
         lang="shell",
@@ -562,7 +576,6 @@ def _generator(
 
     for var in constants.__all__:
         val = constants.__dict__[var]
-        # print(json.dumps(val, indent=4))
 
         rows.append(
             [

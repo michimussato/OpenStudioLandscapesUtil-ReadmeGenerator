@@ -220,10 +220,8 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            cd .features
-            
             git -C .features clone {gh_repo}
-            pip install -e ./.features/{repo_}
+            pip install -e .features/{repo_}
             """
         ),
         lang="shell",
@@ -247,21 +245,19 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            cd .features
-            
-            git clone https://github.com/michimussato/OpenStudioLandscapes-Ayon
-            git clone https://github.com/michimussato/OpenStudioLandscapes-Dagster
-            git clone https://github.com/michimussato/OpenStudioLandscapes-Deadline-10-2
-            git clone https://github.com/michimussato/OpenStudioLandscapes-Deadline-10-2-Worker
-            git clone https://github.com/michimussato/OpenStudioLandscapes-filebrowser
-            # WIP: git clone https://github.com/michimussato/OpenStudioLandscapes-Grafana
-            git clone https://github.com/michimussato/OpenStudioLandscapes-Kitsu
-            # WIP: git clone https://github.com/michimussato/OpenStudioLandscapes-LikeC4
-            git clone https://github.com/michimussato/OpenStudioLandscapes-NukeRLM-8
-            # WIP: git clone https://github.com/michimussato/OpenStudioLandscapes-OpenCue
-            git clone https://github.com/michimussato/OpenStudioLandscapes-SESI-gcc-9-3-Houdini-20
-            git clone https://github.com/michimussato/OpenStudioLandscapes-Syncthing
-            # WIP: git clone https://github.com/michimussato/OpenStudioLandscapes-Watchtower
+            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Ayon
+            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Dagster
+            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Deadline-10-2
+            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Deadline-10-2-Worker
+            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-filebrowser
+            # WIP: git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Grafana
+            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Kitsu
+            # WIP: git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-LikeC4
+            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-NukeRLM-8
+            # WIP: git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-OpenCue
+            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-SESI-gcc-9-3-Houdini-20
+            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Syncthing
+            # WIP: git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Watchtower
             """
         ),
         lang="shell",
@@ -339,7 +335,9 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            """
+            f"""
+            cd .features/{repo_}
+            
             pre-commit install
             """
         ),
@@ -362,7 +360,9 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            """
+            f"""
+            cd .features/{repo_}
+            
             nox --no-error-on-missing-interpreters --report .nox/nox-report.json
             """
         ),
@@ -378,7 +378,9 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            """
+            f"""
+            cd .features/{repo_}
+            
             nox --session readme
             """
         ),
@@ -394,7 +396,9 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            """
+            f"""
+            cd .features/{repo_}
+            
             nox --session docs
             """
         ),
@@ -410,7 +414,9 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            """
+            f"""
+            cd .features/{repo_}
+            
             nox --session lint
             """
         ),
@@ -445,7 +451,9 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            """
+            f"""
+            cd .features/{repo_}
+            
             nox --session sbom
             """
         ),

@@ -202,6 +202,13 @@ def _generator(
         level=2,
     )
 
+    ### This Feature
+
+    doc.add_heading(
+        text="This Feature",
+        level=3,
+    )
+
     ### From Github directly
 
     # doc.add_heading(
@@ -251,10 +258,10 @@ def _generator(
 
     ### From local Repo
 
-    doc.add_heading(
-        text="From local Repo",
-        level=3,
-    )
+    # doc.add_heading(
+    #     text="From local Repo",
+    #     level=3,
+    # )
 
     doc.add_paragraph(
         text=textwrap.dedent(
@@ -309,6 +316,85 @@ def _generator(
             For more info see [VCS Support of pip](https://pip.pypa.io/en/stable/topics/vcs-support/).
             """
         )
+    )
+
+    ### All Features
+
+    doc.add_heading(
+        text="All Features",
+        level=3,
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            f"""
+            cd OpenStudioLandscapes/.features
+            git clone https://github.com/michimussato/OpenStudioLandscapes-Ayon
+            git clone https://github.com/michimussato/OpenStudioLandscapes-Dagster
+            git clone https://github.com/michimussato/OpenStudioLandscapes-Deadline-10-2
+            git clone https://github.com/michimussato/OpenStudioLandscapes-Deadline-10-2-Worker
+            git clone https://github.com/michimussato/OpenStudioLandscapes-filebrowser
+            # WIP: git clone https://github.com/michimussato/OpenStudioLandscapes-Grafana
+            git clone https://github.com/michimussato/OpenStudioLandscapes-Kitsu
+            # WIP: git clone https://github.com/michimussato/OpenStudioLandscapes-LikeC4
+            git clone https://github.com/michimussato/OpenStudioLandscapes-NukeRLM-8
+            # WIP: git clone https://github.com/michimussato/OpenStudioLandscapes-OpenCue
+            git clone https://github.com/michimussato/OpenStudioLandscapes-SESI-gcc-9-3-Houdini-20
+            git clone https://github.com/michimussato/OpenStudioLandscapes-Syncthing
+            # WIP: git clone https://github.com/michimussato/OpenStudioLandscapes-Watchtower
+            """
+        ),
+        lang="shell",
+    )
+
+    doc.add_paragraph(
+        text=textwrap.dedent(
+            """
+            Create venv, activate it and upgrade:
+            """
+        )
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            f"""
+            for dir in "$(pwd)"/; do
+                pushd "${dir}" || exit
+                
+                if [ ! -d .venv ]; then
+                    python3.11 -m venv .venv
+                fi;
+                
+                source .venv/bin/activate
+                echo "activated."
+                pip install --upgrade pip setuptools
+                
+                # Updating dev env
+                # To make sure we are not running into
+                # below (#issues) mentioned problems
+                
+                pip install nox
+        
+                echo "Generating README.md in ${dir}..."
+                nox --session readme
+                echo "nox done."
+                    
+                deactivate
+                echo "deactivated."
+                popd || exit
+            done;
+            """
+        ),
+        lang="shell",
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            f"""
+            pip install -e .[dev]
+            """
+        ),
+        lang="shell",
     )
 
     ## Add to OpenStudioLandscapes

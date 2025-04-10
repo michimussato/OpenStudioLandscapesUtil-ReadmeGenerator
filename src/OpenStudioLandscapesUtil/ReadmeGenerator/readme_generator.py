@@ -242,46 +242,52 @@ def _generator(
         level=3,
     )
 
+    doc.add_heading(
+        text="Clone",
+        level=4,
+    )
+
     doc.add_code(
         code=textwrap.dedent(
             f"""
             git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Ayon
-            pip install -e .features/OpenStudioLandscapes-Ayon
-            
             git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Dagster
-            pip install -e .features/OpenStudioLandscapes-Dagster
-            
             git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Deadline-10-2
-            pip install -e .features/OpenStudioLandscapes-Deadline-10-2
-            
             git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Deadline-10-2-Worker
-            pip install -e .features/OpenStudioLandscapes-Deadline-10-2-Worker
-            
             git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-filebrowser
-            pip install -e .features/OpenStudioLandscapes-filebrowser
-            
             # WIP: git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Grafana
-            # pip install -e .features/OpenStudioLandscapes-Grafana
-            
             git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Kitsu
-            pip install -e .features/OpenStudioLandscapes-Kitsu
-            
             # WIP: git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-LikeC4
-            # pip install -e .features/OpenStudioLandscapes-LikeC4
-            
             git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-NukeRLM-8
-            pip install -e .features/OpenStudioLandscapes-NukeRLM-8
-            
             # WIP: git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-OpenCue
-            # pip install -e .features/OpenStudioLandscapes-OpenCue
-            
             git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-SESI-gcc-9-3-Houdini-20
-            pip install -e .features/OpenStudioLandscapes-SESI-gcc-9-3-Houdini-20
-            
             git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Syncthing
-            pip install -e .features/OpenStudioLandscapes-Syncthing
-            
             # WIP: git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Watchtower
+            """
+        ),
+        lang="shell",
+    )
+
+    doc.add_heading(
+        text="Install",
+        level=4,
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            f"""
+            pip install -e .features/OpenStudioLandscapes-Ayon
+            pip install -e .features/OpenStudioLandscapes-Dagster
+            pip install -e .features/OpenStudioLandscapes-Deadline-10-2
+            pip install -e .features/OpenStudioLandscapes-Deadline-10-2-Worker
+            pip install -e .features/OpenStudioLandscapes-filebrowser
+            # pip install -e .features/OpenStudioLandscapes-Grafana
+            pip install -e .features/OpenStudioLandscapes-Kitsu
+            # pip install -e .features/OpenStudioLandscapes-LikeC4
+            pip install -e .features/OpenStudioLandscapes-NukeRLM-8
+            # pip install -e .features/OpenStudioLandscapes-OpenCue
+            pip install -e .features/OpenStudioLandscapes-SESI-gcc-9-3-Houdini-20
+            pip install -e .features/OpenStudioLandscapes-Syncthing
             # pip install -e .features/OpenStudioLandscapes-Watchtower
             """
         ),

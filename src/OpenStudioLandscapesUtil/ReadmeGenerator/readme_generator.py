@@ -4,7 +4,7 @@ console script. To run this script uncomment the following lines in the
 ``[options.entry_points]`` section in ``setup.cfg``::
 
     console_scripts =
-         fibonacci = ReadmeGenerator.skeleton:run
+         fibonacci = ReadmeGenerator.readme_generator:run
 
 Then run ``pip install .`` (or ``pip install -e .`` for editable mode)
 which will install the command ``fibonacci`` inside your current environment.
@@ -45,7 +45,7 @@ _logger = logging.getLogger(__name__)
 # ---- Python API ----
 # The functions defined in this section can be imported by users in their
 # Python scripts/interactive interpreter, e.g. via
-# `from OpenStudioLandscapesUtil.ReadmeGenerator.skeleton import fib`,
+# `from OpenStudioLandscapesUtil.ReadmeGenerator.readme_generator import fib`,
 # when using this Python module as a library.
 
 
@@ -204,35 +204,35 @@ def _generator(
 
     ### From Github directly
 
-    doc.add_heading(
-        text="From Github directly",
-        level=3,
-    )
-    # Todo:
-    #  - [ ] OpenStudioLandscapes[dev] @ git+https://github.com/michimussato/OpenStudioLandscapes.git@main
-
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            """
-            WIP: This does not work as expected yet.
-            """
-        )
-    )
-
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            """
-            For more info see [VCS Support of pip](https://pip.pypa.io/en/stable/topics/vcs-support/).
-            """
-        )
-    )
-
+    # doc.add_heading(
+    #     text="From Github directly",
+    #     level=3,
+    # )
+    # # Todo:
+    # #  - [ ] OpenStudioLandscapes[dev] @ git+https://github.com/michimussato/OpenStudioLandscapes.git@main
+    #
+    # doc.add_paragraph(
+    #     text=textwrap.dedent(
+    #         """
+    #         WIP: This does not work as expected yet.
+    #         """
+    #     )
+    # )
+    #
+    # doc.add_paragraph(
+    #     text=textwrap.dedent(
+    #         """
+    #         For more info see [VCS Support of pip](https://pip.pypa.io/en/stable/topics/vcs-support/).
+    #         """
+    #     )
+    # )
+    #
     # str_ = "\\'{repo_}[dev] @ git+{gh_repo}@main\\'"
     # ```
     # python3.9 -venv .venv
     # source .venv/bin/activate
     # pip install --upgrade pip setuptools
-    # pip install -e git+https://github.com/michimussato/My-Skeleton-Package.git@main
+    # pip install -e git+https://github.com/michimussato/ReadmeGenerator.git@main
     # ```
     #
     # ```
@@ -259,7 +259,7 @@ def _generator(
     doc.add_paragraph(
         text=textwrap.dedent(
             """
-            Clone repository:
+            Clone this repository into `OpenStudioLandscapes/.features`:
             """
         )
     )
@@ -267,6 +267,7 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
+            cd OpenStudioLandscapes/.features
             git clone {gh_repo}
             cd {repo_}
             """
@@ -923,6 +924,6 @@ if __name__ == "__main__":
     # After installing your project with pip, users can also run your Python
     # modules as scripts via the ``-m`` flag, as defined in PEP 338::
     #
-    #     python -m OpenStudioLandscapesUtil.ReadmeGenerator.skeleton 42
+    #     python -m OpenStudioLandscapesUtil.ReadmeGenerator.readme_generator 42
     #
     run()

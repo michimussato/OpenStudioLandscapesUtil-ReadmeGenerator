@@ -357,7 +357,7 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            f"""
+            """
             for dir in "$(pwd)"/; do
                 pushd "${dir}" || exit
                 

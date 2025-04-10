@@ -209,60 +209,6 @@ def _generator(
         level=3,
     )
 
-    ### From Github directly
-
-    # doc.add_heading(
-    #     text="From Github directly",
-    #     level=3,
-    # )
-    # # Todo:
-    # #  - [ ] OpenStudioLandscapes[dev] @ git+https://github.com/michimussato/OpenStudioLandscapes.git@main
-    #
-    # doc.add_paragraph(
-    #     text=textwrap.dedent(
-    #         """
-    #         WIP: This does not work as expected yet.
-    #         """
-    #     )
-    # )
-    #
-    # doc.add_paragraph(
-    #     text=textwrap.dedent(
-    #         """
-    #         For more info see [VCS Support of pip](https://pip.pypa.io/en/stable/topics/vcs-support/).
-    #         """
-    #     )
-    # )
-    #
-    # str_ = "\\'{repo_}[dev] @ git+{gh_repo}@main\\'"
-    # ```
-    # python3.9 -venv .venv
-    # source .venv/bin/activate
-    # pip install --upgrade pip setuptools
-    # pip install -e git+https://github.com/michimussato/ReadmeGenerator.git@main
-    # ```
-    #
-    # ```
-    # pip install --upgrade pip setuptools
-    # pip install --upgrade pyscaffold
-    # ```
-
-    # doc.add_code(
-    #     code=textwrap.dedent(
-    #         f"""
-    #         pip install -U
-    #         """
-    #     ),
-    #     lang="shell",
-    # )
-
-    ### From local Repo
-
-    # doc.add_heading(
-    #     text="From local Repo",
-    #     level=3,
-    # )
-
     doc.add_paragraph(
         text=textwrap.dedent(
             """
@@ -274,37 +220,10 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            cd OpenStudioLandscapes/.features
-            git clone {gh_repo}
-            cd {repo_}
-            """
-        ),
-        lang="shell",
-    )
-
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            """
-            Create venv, activate it and upgrade:
-            """
-        )
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            f"""
-            python3.11 -m venv .venv
-            source .venv/bin/activate
-            pip install --upgrade pip setuptools
-            """
-        ),
-        lang="shell",
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            f"""
-            pip install -e .[dev]
+            cd .features
+            
+            git -C .features clone {gh_repo}
+            pip install -e ./.features/{repo_}
             """
         ),
         lang="shell",
@@ -328,7 +247,8 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            cd OpenStudioLandscapes/.features
+            cd .features
+            
             git clone https://github.com/michimussato/OpenStudioLandscapes-Ayon
             git clone https://github.com/michimussato/OpenStudioLandscapes-Dagster
             git clone https://github.com/michimussato/OpenStudioLandscapes-Deadline-10-2
@@ -347,14 +267,6 @@ def _generator(
         lang="shell",
     )
 
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            """
-            Create venv, activate it and upgrade:
-            """
-        )
-    )
-
     doc.add_code(
         code=textwrap.dedent(
             """
@@ -363,37 +275,12 @@ def _generator(
             for dir in */; do
                 pushd "${dir}" || exit
                 
-                if [ ! -d .venv ]; then
-                    python3.11 -m venv .venv
-                fi;
-                
-                source .venv/bin/activate
-                echo "activated."
-                pip install --upgrade pip setuptools
-                
-                # Updating dev env
-                # To make sure we are not running into
-                # below (#issues) mentioned problems
-                
-                pip install nox
-        
                 echo "Generating README.md in ${dir}..."
                 nox --session readme
                 echo "nox done."
                     
-                deactivate
-                echo "deactivated."
                 popd || exit
             done;
-            """
-        ),
-        lang="shell",
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            f"""
-            pip install -e .[dev]
             """
         ),
         lang="shell",

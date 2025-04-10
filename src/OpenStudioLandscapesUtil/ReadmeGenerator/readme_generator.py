@@ -358,7 +358,9 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             """
-            for dir in "$(pwd)"/; do
+            cd .features
+            
+            for dir in */; do
                 pushd "${dir}" || exit
                 
                 if [ ! -d .venv ]; then

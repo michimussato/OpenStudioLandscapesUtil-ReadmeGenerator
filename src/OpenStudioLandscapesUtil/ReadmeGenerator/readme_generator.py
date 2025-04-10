@@ -53,7 +53,7 @@ def generate_readme(
         versions: list[str],
 ):
     """Entry point to generate the Readme file
-    for a given OpenStudioLandscapes module
+    for a given OpenStudioLandscapes Feature
     taking Python versions as argument
 
     Args:
@@ -176,7 +176,7 @@ def _generator(
     doc.add_paragraph(
         text=textwrap.dedent(
             """
-            You feel like writing your own module? Go and check out the 
+            You feel like writing your own Feature? Go and check out the 
             [OpenStudioLandscapes-Template](https://github.com/michimussato/OpenStudioLandscapes-Template). 
             """
         )

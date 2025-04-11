@@ -241,6 +241,8 @@ def _generator(
             f"""
             # cd .features/{repo_}
             python3.11 -m venv .venv
+            source .venv/bin/activate
+            python -m pip install --upgrade pip setuptools
             """
         ),
         lang="shell",
@@ -258,8 +260,8 @@ def _generator(
         code=textwrap.dedent(
             f"""
             # cd .features/{repo_}
-            pip install -e ../../[dev]
-            pip install -e .[dev]
+            pip install -e "../../[dev]"
+            pip install -e ".[dev]"
             """
         ),
         lang="shell",

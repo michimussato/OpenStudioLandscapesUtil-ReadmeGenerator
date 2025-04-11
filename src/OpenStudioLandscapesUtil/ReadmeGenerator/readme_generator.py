@@ -235,86 +235,6 @@ def _generator(
         )
     )
 
-    ### All Features
-
-    doc.add_heading(
-        text="All Features",
-        level=3,
-    )
-
-    doc.add_heading(
-        text="Clone",
-        level=4,
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            f"""
-            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Ayon
-            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Dagster
-            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Deadline-10-2
-            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Deadline-10-2-Worker
-            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-filebrowser
-            # WIP: git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Grafana
-            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Kitsu
-            # WIP: git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-LikeC4
-            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-NukeRLM-8
-            # WIP: git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-OpenCue
-            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-SESI-gcc-9-3-Houdini-20
-            git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Syncthing
-            # WIP: git -C .features clone https://github.com/michimussato/OpenStudioLandscapes-Watchtower
-            """
-        ),
-        lang="shell",
-    )
-
-    doc.add_heading(
-        text="Install",
-        level=4,
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            f"""
-            pip install -e .features/OpenStudioLandscapes-Ayon
-            pip install -e .features/OpenStudioLandscapes-Dagster
-            pip install -e .features/OpenStudioLandscapes-Deadline-10-2
-            pip install -e .features/OpenStudioLandscapes-Deadline-10-2-Worker
-            pip install -e .features/OpenStudioLandscapes-filebrowser
-            # pip install -e .features/OpenStudioLandscapes-Grafana
-            pip install -e .features/OpenStudioLandscapes-Kitsu
-            # pip install -e .features/OpenStudioLandscapes-LikeC4
-            pip install -e .features/OpenStudioLandscapes-NukeRLM-8
-            # pip install -e .features/OpenStudioLandscapes-OpenCue
-            pip install -e .features/OpenStudioLandscapes-SESI-gcc-9-3-Houdini-20
-            pip install -e .features/OpenStudioLandscapes-Syncthing
-            # pip install -e .features/OpenStudioLandscapes-Watchtower
-            """
-        ),
-        lang="shell",
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            """
-            pushd .features || exit
-            
-            for dir in */; do
-                pushd "${dir}" || exit
-                
-                echo "Generating README.md in ${dir}..."
-                nox --session readme
-                echo "nox done."
-                    
-                popd || exit
-            done;
-            
-            popd || exit
-            """
-        ),
-        lang="shell",
-    )
-
     ## Add to OpenStudioLandscapes
 
     doc.add_heading(
@@ -369,11 +289,7 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            pushd .features/{repo_} || exit
-            
             pre-commit install
-            
-            popd || exit
             """
         ),
         lang="shell",
@@ -396,11 +312,7 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            pushd .features/{repo_} || exit
-            
             nox --no-error-on-missing-interpreters --report .nox/nox-report.json
-            
-            popd || exit
             """
         ),
         lang="shell",
@@ -416,11 +328,7 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            pushd .features/{repo_} || exit
-            
             nox --session readme
-            
-            popd || exit
             """
         ),
         lang="shell",
@@ -436,11 +344,7 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            pushd .features/{repo_} || exit
-            
             nox --session docs
-            
-            popd || exit
             """
         ),
         lang="shell",
@@ -456,11 +360,7 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            pushd .features/{repo_} || exit
-            
             nox --session lint
-            
-            popd || exit
             """
         ),
         lang="shell",
@@ -495,11 +395,7 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            pushd .features/{repo_} || exit
-            
             nox --session sbom
-            
-            popd || exit
             """
         ),
         lang="shell",

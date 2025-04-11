@@ -192,6 +192,7 @@ def _generator(
     doc.add_unordered_list(
         [
             "`python-3.11`",
+            "`OpenStudioLandscapes`",
         ]
     )
 
@@ -220,8 +221,45 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            git -C .features clone {gh_repo}
-            pip install -e .features/{repo_}
+            # cd .features
+            git clone {gh_repo}
+            """
+        ),
+        lang="shell",
+    )
+
+    doc.add_paragraph(
+        text=textwrap.dedent(
+            """
+            Create `venv`:
+            """
+        )
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            f"""
+            # cd .features/{repo_}
+            python3.11 -m venv .venv
+            """
+        ),
+        lang="shell",
+    )
+
+    doc.add_paragraph(
+        text=textwrap.dedent(
+            """
+            Configure `venv`:
+            """
+        )
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            f"""
+            # cd .features/{repo_}
+            pip install -e ../../[dev]
+            pip install -e .[dev]
             """
         ),
         lang="shell",

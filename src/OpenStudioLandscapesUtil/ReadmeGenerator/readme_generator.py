@@ -697,6 +697,19 @@ def _generator(
                 "channel_name": "# openstudiolandscapes-sesi-gcc-9-3-houdini-20",
             },
         },
+        # "OpenStudioLandscapes-Pi-hole": {
+        #     "github": {
+        #         "repo_name": "OpenStudioLandscapes-Pi-hole",
+        #     },
+        #     "discord": {
+        #         "channel_id": "",
+        #         "channel_name": "# openstudiolandscapes-pi-hole",
+        #     },
+        #     "slack": {
+        #         "channel_id": "",
+        #         "channel_name": "# openstudiolandscapes-pi-hole",
+        #     },
+        # },
         # "OpenStudioLandscapes-Syncthing": {
         #     "github": {
         #         "repo_name": "",

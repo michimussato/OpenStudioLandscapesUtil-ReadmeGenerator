@@ -260,7 +260,7 @@ def _generator(
         code=textwrap.dedent(
             f"""
             # cd .features/{repo_}
-            pip install -e agfsdfgsd"../../[dev]"
+            pip install -e "../../[dev]"
             pip install -e ".[dev]"
             """
         ),

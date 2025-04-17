@@ -151,7 +151,7 @@ def _generator(
     # Title
 
     doc.add_heading(
-        text=repo_,
+        text=f"Feature: {repo_}",
         level=1,
     )
 
@@ -301,7 +301,7 @@ def _generator(
                }
             )
             """
-        ) % str(constants._module).replace(".constants", ""),  # Todo: a bit hacky
+        ) % str(module_).replace(".constants", ""),  # Todo: a bit hacky
         lang="python",
     )
 
@@ -504,7 +504,7 @@ def _generator(
         text=textwrap.dedent(
             f"""
             The following variables are being declared in 
-            [`{constants._module}`]({gh_prefix}{gh_path_constants}) published throughout the `{repo_}` package.
+            [`{module_}`]({gh_prefix}{gh_path_constants}) published throughout the `{repo_}` package.
             """
         )
     )
@@ -540,10 +540,10 @@ def _generator(
         indent=0,
     )
 
-    ### ENVIRONMENT
+    ### FEATURE_CONFIGS
 
     doc.add_heading(
-        text="Environment",
+        text="Feature Configs",
         level=3,
     )
 
@@ -553,34 +553,41 @@ def _generator(
         # "Value"
     ]
 
-    rows_environment = []
+    for k_feature_config, v_feature_config in constants.FEATURE_CONFIGS.items():
 
-    for k, v in constants.ENVIRONMENT.items():
-
-        rows_environment.append(
-            [
-                snakemd.Inline(
-                    text=k,
-                ).code(),
-                snakemd.Inline(
-                    text=type(v).__name__,
-                ).code(),
-                # snakemd.Inline(
-                #     text=v,
-                # ).code(),
-            ]
+        doc.add_heading(
+            text=f"Feature Config: {k_feature_config}",
+            level=4,
         )
 
-    doc.add_table(
-        header=header_environment,
-        data=rows_environment,
-        align=[
-            snakemd.Table.Align.LEFT,
-            snakemd.Table.Align.LEFT,
-            # snakemd.Table.Align.LEFT,
-        ],
-        indent=0,
-    )
+        rows_environment = []
+
+        for k, v in v_feature_config.items():
+
+            rows_environment.append(
+                [
+                    snakemd.Inline(
+                        text=k,
+                    ).code(),
+                    snakemd.Inline(
+                        text=type(v).__name__,
+                    ).code(),
+                    # snakemd.Inline(
+                    #     text=v,
+                    # ).code(),
+                ]
+            )
+
+        doc.add_table(
+            header=header_environment,
+            data=rows_environment,
+            align=[
+                snakemd.Table.Align.LEFT,
+                snakemd.Table.Align.LEFT,
+                # snakemd.Table.Align.LEFT,
+            ],
+            indent=0,
+        )
 
     ## Community
 

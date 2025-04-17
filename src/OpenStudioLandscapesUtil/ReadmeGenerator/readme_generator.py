@@ -550,7 +550,7 @@ def _generator(
     header_environment = [
         "Variable",
         "Type",
-        # "Value"
+        "Value"
     ]
 
     for k_feature_config, v_feature_config in constants.FEATURE_CONFIGS.items():
@@ -572,9 +572,9 @@ def _generator(
                     snakemd.Inline(
                         text=type(v).__name__,
                     ).code(),
-                    # snakemd.Inline(
-                    #     text=v,
-                    # ).code(),
+                    snakemd.Inline(
+                        text=v,
+                    ).code(),
                 ]
             )
 

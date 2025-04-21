@@ -584,7 +584,7 @@ def _generator(
             align=[
                 snakemd.Table.Align.LEFT,
                 snakemd.Table.Align.LEFT,
-                snakemd.Table.Align.LEFT,
+                # snakemd.Table.Align.LEFT,
             ],
             indent=0,
         )
@@ -597,7 +597,7 @@ def _generator(
     )
 
     discord = "https://discord.com/channels/1357343453364748419"
-    slack = "https://app.slack.com/client/T08L6M6L0S3"
+    # slack = "https://app.slack.com/client/T08L6M6L0S3"
 
     community_channels = {
         "OpenStudioLandscapes": {
@@ -776,7 +776,7 @@ def _generator(
         # "Module",
         "GitHub",
         "Discord",
-        "Slack",
+        # "Slack",
     ]
 
     rows = []
@@ -784,12 +784,12 @@ def _generator(
     for _, value in community_channels.items():
         github_ = value["github"]
         discord_ = value["discord"]
-        slack_ = value["slack"]
+        # slack_ = value["slack"]
         row = [
             # module,
             f"[{github_['repo_name']}]({gh_prefix}{github_['repo_name']})",  # github
             f"[{discord_['channel_name']}]({discord}/{discord_['channel_id']})",  # discord
-            f"[{slack_['channel_name']}]({slack}/{slack_['channel_id']})"  # slack
+            # f"[{slack_['channel_name']}]({slack}/{slack_['channel_id']})"  # slack
         ]
 
         rows.append(row)
@@ -797,6 +797,15 @@ def _generator(
     doc.add_table(
         header=header,
         data=rows,
+    )
+
+    doc.add_paragraph(
+        text=textwrap.dedent(
+            f"""
+            To follow up on the previous LinkedIn publications, visit 
+            [OpenStudioLandscapes on LinkedIn](https://www.linkedin.com/search/results/all/?keywords=%23openstudiolandscapes).
+            """
+        )
     )
 
     # Dump

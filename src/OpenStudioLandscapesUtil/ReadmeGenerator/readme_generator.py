@@ -584,7 +584,7 @@ def _generator(
             align=[
                 snakemd.Table.Align.LEFT,
                 snakemd.Table.Align.LEFT,
-                # snakemd.Table.Align.LEFT,
+                snakemd.Table.Align.LEFT,
             ],
             indent=0,
         )

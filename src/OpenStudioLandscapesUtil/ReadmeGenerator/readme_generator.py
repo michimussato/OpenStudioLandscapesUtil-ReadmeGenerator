@@ -609,10 +609,10 @@ def _generator(
                 "channel_name": "# openstudiolandscapes-general",
                 "channel_id": "1357343454065328202",
             },
-            "slack": {
-                "channel_name": "# openstudiolandscapes-general",
-                "channel_id": "C08LK80NBFF",
-            },
+            # "slack": {
+            #     "channel_name": "# openstudiolandscapes-general",
+            #     "channel_id": "C08LK80NBFF",
+            # },
         },
         "OpenStudioLandscapes-Ayon": {
             "github": {
@@ -622,10 +622,10 @@ def _generator(
                 "channel_name": "# openstudiolandscapes-ayon",
                 "channel_id": "1357722468336271411",
             },
-            "slack": {
-                "channel_name": "# openstudiolandscapes-ayon",
-                "channel_id": "C08LLBC7CB0",
-            },
+            # "slack": {
+            #     "channel_name": "# openstudiolandscapes-ayon",
+            #     "channel_id": "C08LLBC7CB0",
+            # },
         },
         "OpenStudioLandscapes-Dagster": {
             "github": {
@@ -635,10 +635,10 @@ def _generator(
                 "channel_id": "1358016764608249856",
                 "channel_name": "# openstudiolandscapes-dagster",
             },
-            "slack": {
-                "channel_id": "C08LZR5JFA6",
-                "channel_name": "# openstudiolandscapes-dagster",
-            },
+            # "slack": {
+            #     "channel_id": "C08LZR5JFA6",
+            #     "channel_name": "# openstudiolandscapes-dagster",
+            # },
         },
         "OpenStudioLandscapes-deadline-10-2": {
             "github": {
@@ -648,10 +648,10 @@ def _generator(
                 "channel_id": "1357343453364748419",
                 "channel_name": "# openstudiolandscapes-deadline-10-2",
             },
-            "slack": {
-                "channel_id": "C08LZR963A6",
-                "channel_name": "# openstudiolandscapes-deadline-10-2",
-            },
+            # "slack": {
+            #     "channel_id": "C08LZR963A6",
+            #     "channel_name": "# openstudiolandscapes-deadline-10-2",
+            # },
         },
         "OpenStudioLandscapes-Deadline-10-2-Worker": {
             "github": {
@@ -661,24 +661,24 @@ def _generator(
                 "channel_id": "1357343453364748419",
                 "channel_name": "# openstudiolandscapes-deadline-10-2-worker",
             },
-            "slack": {
-                "channel_id": "C08LZSBM998",
-                "channel_name": "# openstudiolandscapes-deadline-10-2-worker",
-            },
+            # "slack": {
+            #     "channel_id": "C08LZSBM998",
+            #     "channel_name": "# openstudiolandscapes-deadline-10-2-worker",
+            # },
         },
-        # "OpenStudioLandscapes-filebrowser": {
-        #     "github": {
-        #         "repo_name": "",
-        #     },
-        #     "discord": {
-        #         "channel_id": "",
-        #         "channel_name": "",
-        #     },
-        #     "slack": {
-        #         "channel_id": "",
-        #         "channel_name": "",
-        #     },
-        # },
+        "OpenStudioLandscapes-filebrowser": {
+            "github": {
+                "repo_name": "OpenStudioLandscapes-filebrowser",
+            },
+            "discord": {
+                "channel_id": "1364746200175083520",
+                "channel_name": "# openstudiolandscapes-filebrowser",
+            },
+            # "slack": {
+            #     "channel_id": "",
+            #     "channel_name": "",
+            # },
+        },
         "OpenStudioLandscapes-NukeRLM-8": {
             "github": {
                 "repo_name": "OpenStudioLandscapes-NukeRLM-8",
@@ -687,10 +687,10 @@ def _generator(
                 "channel_id": "1358017656732782672",
                 "channel_name": "# openstudiolandscapes-nukerlm-8",
             },
-            "slack": {
-                "channel_id": "C08LZDLFTMH",
-                "channel_name": "# openstudiolandscapes-nukerlm-8",
-            },
+            # "slack": {
+            #     "channel_id": "C08LZDLFTMH",
+            #     "channel_name": "# openstudiolandscapes-nukerlm-8",
+            # },
         },
         "OpenStudioLandscapes-SESI-gcc-9-3-Houdini-20": {
             "github": {
@@ -700,10 +700,10 @@ def _generator(
                 "channel_id": "1357343453364748419",
                 "channel_name": "# openstudiolandscapes-sesi-gcc-9-3-houdini-20",
             },
-            "slack": {
-                "channel_id": "C08LUTR1WG5",
-                "channel_name": "# openstudiolandscapes-sesi-gcc-9-3-houdini-20",
-            },
+            # "slack": {
+            #     "channel_id": "C08LUTR1WG5",
+            #     "channel_name": "# openstudiolandscapes-sesi-gcc-9-3-houdini-20",
+            # },
         },
         # "OpenStudioLandscapes-Pi-hole": {
         #     "github": {
@@ -718,19 +718,19 @@ def _generator(
         #         "channel_name": "# openstudiolandscapes-pi-hole",
         #     },
         # },
-        # "OpenStudioLandscapes-Syncthing": {
-        #     "github": {
-        #         "repo_name": "",
-        #     },
-        #     "discord": {
-        #         "channel_id": "",
-        #         "channel_name": "",
-        #     },
-        #     "slack": {
-        #         "channel_id": "",
-        #         "channel_name": "",
-        #     },
-        # },
+        "OpenStudioLandscapes-Syncthing": {
+            "github": {
+                "repo_name": "OpenStudioLandscapes-Syncthing",
+            },
+            "discord": {
+                "channel_id": "1364746871381168138",
+                "channel_name": "# openstudiolandscapes-syncthing",
+            },
+            # "slack": {
+            #     "channel_id": "",
+            #     "channel_name": "",
+            # },
+        },
         "OpenStudioLandscapes-Kitsu": {
             "github": {
                 "repo_name": "OpenStudioLandscapes-Kitsu",
@@ -739,24 +739,24 @@ def _generator(
                 "channel_name": "# openstudiolandscapes-kitsu",
                 "channel_id": "1357638253632688231",
             },
-            "slack": {
-                "channel_name": "# openstudiolandscapes-kitsu",
-                "channel_id": "C08L6M70ZB9",
-            },
+            # "slack": {
+            #     "channel_name": "# openstudiolandscapes-kitsu",
+            #     "channel_id": "C08L6M70ZB9",
+            # },
         },
-        # "OpenStudioLandscapes-Watchtower": {
-        #     "github": {
-        #         "repo_name": "",
-        #     },
-        #     "discord": {
-        #         "channel_id": "",
-        #         "channel_name": "",
-        #     },
-        #     "slack": {
-        #         "channel_id": "",
-        #         "channel_name": "",
-        #     },
-        # },
+        "OpenStudioLandscapes-Watchtower": {
+            "github": {
+                "repo_name": "OpenStudioLandscapes-Watchtower",
+            },
+            "discord": {
+                "channel_id": "1364747275938562079",
+                "channel_name": "# openstudiolandscapes-watchtower",
+            },
+            # "slack": {
+            #     "channel_id": "",
+            #     "channel_name": "",
+            # },
+        },
         # # Template
         # "OpenStudioLandscapes-template": {
         #     "github": {

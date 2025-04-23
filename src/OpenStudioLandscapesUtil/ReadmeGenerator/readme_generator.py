@@ -298,6 +298,7 @@ def _generator(
                   "enabled": True,
                   "module": "%s.definitions",
                   "compose_scope": ComposeScope.DEFAULT,
+                  "feature_config": OpenStudioLandscapesConfig.DEFAULT,
                }
             )
             """

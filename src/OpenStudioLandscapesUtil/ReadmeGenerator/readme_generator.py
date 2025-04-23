@@ -285,7 +285,7 @@ def _generator(
     doc.add_paragraph(
         text=textwrap.dedent(
             """
-            Add the following code to `OpenStudioLandscapes.engine.constants` (`THIRD_PARTY`):
+            Add the following code to `OpenStudioLandscapes.engine.constants` (`FEATURES`):
             """
         )
     )
@@ -293,7 +293,7 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             """
-            THIRD_PARTY.append(
+            FEATURES.update(
                {
                   "enabled": True,
                   "module": "%s.definitions",

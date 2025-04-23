@@ -802,10 +802,16 @@ def _generator(
     doc.add_paragraph(
         text=textwrap.dedent(
             f"""
-            To follow up on the previous LinkedIn publications, visit 
-            [OpenStudioLandscapes on LinkedIn](https://www.linkedin.com/search/results/all/?keywords=%23openstudiolandscapes).
+            To follow up on the previous LinkedIn publications, visit:
             """
         )
+    )
+
+    doc.add_unordered_list(
+        [
+            "[OpenStudioLandscapes on LinkedIn](https://www.linkedin.com/company/106731439/).",
+            "[Search for tag #OpenStudioLandscapes on LinkedIn](https://www.linkedin.com/search/results/all/?keywords=%23openstudiolandscapes).",
+        ]
     )
 
     # Dump

@@ -26,6 +26,8 @@ References:
 import argparse
 import logging
 import pathlib
+from typing import Union, List
+
 import sys
 import importlib
 import textwrap
@@ -71,9 +73,15 @@ def generate_readme(
 
     constants = importlib.import_module(f'{namespace}.{package}.constants')
 
+    try:
+        readme_feature = importlib.import_module(f'{namespace}.{package}.readme_feature')
+    except ImportError:
+        readme_feature = None
+
     readme = _generator(
         constants=constants,
         python_versions=versions,
+        readme_feature=readme_feature,
     )
 
     return readme.as_posix()
@@ -81,7 +89,8 @@ def generate_readme(
 
 def _generator(
         constants,
-        python_versions: list[str],
+        python_versions: List[str],
+        readme_feature: Union[snakemd.Document, None] = None,
 ) -> pathlib.Path:
 
     rel_path = pathlib.Path(constants.__file__)
@@ -274,6 +283,10 @@ def _generator(
             """
         )
     )
+
+    # Inject Feature specific documentation if there is any
+    if readme_feature is not None:
+        doc = readme_feature.readme_feature(doc)
 
     ## Add to OpenStudioLandscapes
 

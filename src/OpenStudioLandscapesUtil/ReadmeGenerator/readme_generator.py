@@ -141,7 +141,6 @@ def _generator(
             ),
             image={
                 "OpenStudioLandscapes": "https://github.com/michimussato/OpenStudioLandscapes/raw/main/_images/logo128.png",
-                "test": "https://www.snakemd.io/en/latest/_static/icon.png"
             }["OpenStudioLandscapes"],
             link="https://github.com/michimussato/OpenStudioLandscapes",
         ).__str__()

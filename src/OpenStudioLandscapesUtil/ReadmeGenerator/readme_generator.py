@@ -306,12 +306,12 @@ def _generator(
         code=textwrap.dedent(
             """
             FEATURES.update(
-               {
-                  "enabled": True,
-                  "module": "%s.definitions",
-                  "compose_scope": ComposeScope.DEFAULT,
-                  "feature_config": OpenStudioLandscapesConfig.DEFAULT,
-               }
+                "OpenStudioLandscapes-%s": {
+                    "enabled": True,
+                    "module": "OpenStudioLandscapes.%s.definitions",
+                    "compose_scope": ComposeScope.DEFAULT,
+                    "feature_config": OpenStudioLandscapesConfig.DEFAULT,
+                }
             )
             """
         ) % str(module_).replace(".constants", ""),  # Todo: a bit hacky

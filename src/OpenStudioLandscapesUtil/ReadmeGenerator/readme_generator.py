@@ -520,7 +520,8 @@ def _generator(
         text=textwrap.dedent(
             f"""
             The following variables are being declared in 
-            [`{module_}`]({gh_prefix}{gh_path_constants}) published throughout the `{repo_}` package.
+            [`{module_}.constants`]({gh_prefix}{gh_path_constants}) and are accessible 
+            throughout the `{repo_}` package.
             """
         )
     )

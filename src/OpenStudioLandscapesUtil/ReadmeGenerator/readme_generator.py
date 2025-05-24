@@ -830,6 +830,19 @@ def _generator(
         ]
     )
 
+    doc.add_horizontal_rule()
+
+
+
+    doc.add_paragraph(
+        text=textwrap.dedent(
+            """
+            This `README.md` was dynamically created with 
+            [OpenStudioLandscapesUtil-ReadmeGenerator](https://github.com/michimussato/OpenStudioLandscapesUtil-ReadmeGenerator).
+            """
+        )
+    )
+
     # Dump
 
     outfile = pathlib.Path(rel_path).parent.parent.parent.parent / "README"

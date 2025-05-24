@@ -315,7 +315,7 @@ def _generator(
             )
             """
         ) % (
-            str(module_).replace(".constants", ""),
+            str(module_).replace("_", "-").replace(".constants", ""),
             str(module_).replace(".constants", ""),
         ),  # Todo: a bit hacky
         lang="python",

@@ -520,8 +520,8 @@ def _generator(
         text=textwrap.dedent(
             f"""
             The following variables are being declared in 
-            [`{module_}.constants`]({gh_prefix}{gh_path_constants}) and are accessible 
-            throughout the `{repo_}` package.
+            [`OpenStudioLandscapes.{module_}.constants`]({gh_prefix}{gh_path_constants}) 
+            and are accessible throughout the `{repo_}` package.
             """
         )
     )

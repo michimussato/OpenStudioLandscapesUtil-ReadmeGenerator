@@ -314,7 +314,10 @@ def _generator(
                 }
             )
             """
-        ) % str(module_).replace(".constants", ""),  # Todo: a bit hacky
+        ) % (
+            str(module_).replace(".constants", ""),
+            str(module_).replace(".constants", ""),
+        ),  # Todo: a bit hacky
         lang="python",
     )
 

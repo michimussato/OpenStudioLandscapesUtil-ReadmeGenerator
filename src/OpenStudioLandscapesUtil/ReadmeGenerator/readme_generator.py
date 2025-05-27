@@ -156,6 +156,17 @@ def _generator(
 
     doc.add_horizontal_rule()
 
+    doc.add_paragraph(
+        text=textwrap.dedent(
+            """
+            This `README.md` was dynamically created with 
+            [OpenStudioLandscapesUtil-ReadmeGenerator](https://github.com/michimussato/OpenStudioLandscapesUtil-ReadmeGenerator).
+            """
+        )
+    )
+
+    doc.add_horizontal_rule()
+
     # Title
 
     doc.add_heading(
@@ -825,17 +836,6 @@ def _generator(
             "[OpenStudioLandscapes on LinkedIn](https://www.linkedin.com/company/106731439/).",
             "[Search for tag #OpenStudioLandscapes on LinkedIn](https://www.linkedin.com/search/results/all/?keywords=%23openstudiolandscapes).",
         ]
-    )
-
-    doc.add_horizontal_rule()
-
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            """
-            This `README.md` was dynamically created with 
-            [OpenStudioLandscapesUtil-ReadmeGenerator](https://github.com/michimussato/OpenStudioLandscapesUtil-ReadmeGenerator).
-            """
-        )
     )
 
     # Inject Feature specific documentation if there is any

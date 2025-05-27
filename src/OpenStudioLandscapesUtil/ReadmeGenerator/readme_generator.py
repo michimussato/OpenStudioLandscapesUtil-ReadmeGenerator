@@ -829,10 +829,6 @@ def _generator(
 
     doc.add_horizontal_rule()
 
-    # Inject Feature specific documentation if there is any
-    if readme_feature is not None:
-        doc = readme_feature.readme_feature(doc)
-
     doc.add_paragraph(
         text=textwrap.dedent(
             """
@@ -841,6 +837,10 @@ def _generator(
             """
         )
     )
+
+    # Inject Feature specific documentation if there is any
+    if readme_feature is not None:
+        doc = readme_feature.readme_feature(doc)
 
     # Dump
 

@@ -283,10 +283,6 @@ def _generator(
         )
     )
 
-    # Inject Feature specific documentation if there is any
-    if readme_feature is not None:
-        doc = readme_feature.readme_feature(doc)
-
     ## Add to OpenStudioLandscapes
 
     doc.add_heading(
@@ -610,7 +606,7 @@ def _generator(
 
     doc.add_heading(
         text="Community",
-        level=2,
+        level=1,
     )
 
     discord = "https://discord.com/channels/1357343453364748419"
@@ -833,7 +829,11 @@ def _generator(
 
     doc.add_horizontal_rule()
 
+    # Inject Feature specific documentation if there is any
+    if readme_feature is not None:
+        doc = readme_feature.readme_feature(doc)
 
+        doc.add_horizontal_rule()
 
     doc.add_paragraph(
         text=textwrap.dedent(

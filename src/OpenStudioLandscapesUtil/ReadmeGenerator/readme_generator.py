@@ -840,6 +840,7 @@ def _generator(
 
     # Inject Feature specific documentation if there is any
     if readme_feature is not None:
+        doc.add_horizontal_rule()
         doc = readme_feature.readme_feature(doc)
 
     # Dump

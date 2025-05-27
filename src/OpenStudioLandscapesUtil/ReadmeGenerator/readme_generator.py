@@ -602,7 +602,7 @@ def _generator(
             indent=0,
         )
 
-    ## Community
+    # Community
 
     doc.add_heading(
         text="Community",
@@ -832,8 +832,6 @@ def _generator(
     # Inject Feature specific documentation if there is any
     if readme_feature is not None:
         doc = readme_feature.readme_feature(doc)
-
-        doc.add_horizontal_rule()
 
     doc.add_paragraph(
         text=textwrap.dedent(

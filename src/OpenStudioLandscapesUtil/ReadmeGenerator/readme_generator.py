@@ -71,8 +71,8 @@ def generate_readme(
     namespace = cf["pyscaffold"]["namespace"]
     package = cf["pyscaffold"]["package"]
 
-    _logger.debug(f"{namespace = }")
-    _logger.debug(f"{package = }")
+    _logger.info(f"{namespace = }")
+    _logger.info(f"{package = }")
 
     constants = importlib.import_module(f"{namespace}.{package}.constants")
 

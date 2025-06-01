@@ -398,7 +398,7 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            nox --session readme
+            nox -v --add-timestamp --session readme
             """
         ),
         lang="shell",
@@ -414,7 +414,7 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            nox --session docs
+            nox -v --add-timestamp --session docs
             """
         ),
         lang="shell",
@@ -430,7 +430,7 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            nox --session lint
+            nox -v --add-timestamp --session lint
             """
         ),
         lang="shell",
@@ -465,7 +465,7 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""
-            nox --session sbom
+            nox -v --add-timestamp --session sbom
             """
         ),
         lang="shell",

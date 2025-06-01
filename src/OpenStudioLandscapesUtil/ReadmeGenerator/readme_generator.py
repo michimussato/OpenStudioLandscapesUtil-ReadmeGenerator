@@ -66,15 +66,18 @@ def generate_readme(
     """
 
     cf = ConfigParser()
-    cf.read('setup.cfg')
+    cf.read("setup.cfg")
 
-    namespace = cf['pyscaffold']['namespace']
-    package = cf['pyscaffold']['package']
+    namespace = cf["pyscaffold"]["namespace"]
+    package = cf["pyscaffold"]["package"]
 
-    constants = importlib.import_module(f'{namespace}.{package}.constants')
+    _logger.debug(f"{namespace = }")
+    _logger.debug(f"{package = }")
+
+    constants = importlib.import_module(f"{namespace}.{package}.constants")
 
     try:
-        readme_feature = importlib.import_module(f'{namespace}.{package}.readme_feature')
+        readme_feature = importlib.import_module(f"{namespace}.{package}.readme_feature")
     except ImportError:
         readme_feature = None
 

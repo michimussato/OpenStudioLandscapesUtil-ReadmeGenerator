@@ -620,13 +620,6 @@ def _generator(
             indent=0,
         )
 
-    # Community
-
-    doc.add_heading(
-        text="Community",
-        level=1,
-    )
-
     discord = "https://discord.com/channels/1357343453364748419"
     # slack = "https://app.slack.com/client/T08L6M6L0S3"
 
@@ -643,6 +636,9 @@ def _generator(
             #     "channel_name": "# openstudiolandscapes-general",
             #     "channel_id": "C08LK80NBFF",
             # },
+            "readthedocs": {
+                "latest": "https://openstudiolandscapes.readthedocs.io/en/latest/index.html",
+            },
         },
         "OpenStudioLandscapes-Ayon": {
             "github": {
@@ -656,6 +652,9 @@ def _generator(
             #     "channel_name": "# openstudiolandscapes-ayon",
             #     "channel_id": "C08LLBC7CB0",
             # },
+            "readthedocs": {
+                "latest": "https://openstudiolandscapes-ayon.readthedocs.io/en/latest/index.html",
+            },
         },
         "OpenStudioLandscapes-Dagster": {
             "github": {
@@ -669,8 +668,11 @@ def _generator(
             #     "channel_id": "C08LZR5JFA6",
             #     "channel_name": "# openstudiolandscapes-dagster",
             # },
+            "readthedocs": {
+                "latest": "https://openstudiolandscapes-dagster.readthedocs.io/en/latest/index.html",
+            },
         },
-        "OpenStudioLandscapes-deadline-10-2": {
+        "OpenStudioLandscapes-Deadline-10-2": {
             "github": {
                 "repo_name": "OpenStudioLandscapes-Deadline-10-2",
             },
@@ -682,6 +684,9 @@ def _generator(
             #     "channel_id": "C08LZR963A6",
             #     "channel_name": "# openstudiolandscapes-deadline-10-2",
             # },
+            "readthedocs": {
+                "latest": "https://openstudiolandscapes-deadline-10-2.readthedocs.io/en/latest/index.html",
+            },
         },
         "OpenStudioLandscapes-Deadline-10-2-Worker": {
             "github": {
@@ -695,6 +700,9 @@ def _generator(
             #     "channel_id": "C08LZSBM998",
             #     "channel_name": "# openstudiolandscapes-deadline-10-2-worker",
             # },
+            "readthedocs": {
+                "latest": "https://openstudiolandscapes-deadline-10-2-worker.readthedocs.io/en/latest/index.html",
+            },
         },
         "OpenStudioLandscapes-filebrowser": {
             "github": {
@@ -708,6 +716,9 @@ def _generator(
             #     "channel_id": "",
             #     "channel_name": "",
             # },
+            "readthedocs": {
+                "latest": "https://openstudiolandscapes-filebrowser.readthedocs.io/en/latest/index.html",
+            },
         },
         "OpenStudioLandscapes-NukeRLM-8": {
             "github": {
@@ -721,6 +732,9 @@ def _generator(
             #     "channel_id": "C08LZDLFTMH",
             #     "channel_name": "# openstudiolandscapes-nukerlm-8",
             # },
+            "readthedocs": {
+                "latest": "https://openstudiolandscapes-nukerlm-8.readthedocs.io/en/latest/index.html",
+            },
         },
         "OpenStudioLandscapes-SESI-gcc-9-3-Houdini-20": {
             "github": {
@@ -734,6 +748,9 @@ def _generator(
             #     "channel_id": "C08LUTR1WG5",
             #     "channel_name": "# openstudiolandscapes-sesi-gcc-9-3-houdini-20",
             # },
+            "readthedocs": {
+                "latest": "https://openstudiolandscapes-sesi-gcc-9-3-houdini-20.readthedocs.io/en/latest/index.html",
+            },
         },
         # "OpenStudioLandscapes-Pi-hole": {
         #     "github": {
@@ -746,6 +763,9 @@ def _generator(
         #     "slack": {
         #         "channel_id": "",
         #         "channel_name": "# openstudiolandscapes-pi-hole",
+        #     },
+        #     "readthedocs": {
+        #         "latest": "https://openstudiolandscapes-pi-hole.readthedocs.io/en/latest/index.html",
         #     },
         # },
         "OpenStudioLandscapes-Syncthing": {
@@ -760,6 +780,9 @@ def _generator(
             #     "channel_id": "",
             #     "channel_name": "",
             # },
+            "readthedocs": {
+                "latest": "https://openstudiolandscapes-syncthing.readthedocs.io/en/latest/index.html",
+            },
         },
         "OpenStudioLandscapes-Kitsu": {
             "github": {
@@ -773,6 +796,9 @@ def _generator(
             #     "channel_name": "# openstudiolandscapes-kitsu",
             #     "channel_id": "C08L6M70ZB9",
             # },
+            "readthedocs": {
+                "latest": "https://openstudiolandscapes-kitsu.readthedocs.io/en/latest/index.html",
+            },
         },
         "OpenStudioLandscapes-Watchtower": {
             "github": {
@@ -786,6 +812,9 @@ def _generator(
             #     "channel_id": "",
             #     "channel_name": "",
             # },
+            "readthedocs": {
+                "latest": "https://openstudiolandscapes-watchtower.readthedocs.io/en/latest/index.html",
+            },
         },
         # # Template
         # "OpenStudioLandscapes-template": {
@@ -800,8 +829,18 @@ def _generator(
         #         "channel_id": "",
         #         "channel_name": "",
         #     },
+        #     "readthedocs": {
+        #         "latest": "",
+        #     },
         # },
     }
+
+    # Community
+
+    doc.add_heading(
+        text="Community",
+        level=1,
+    )
 
     header = [
         # "Module",
@@ -843,6 +882,34 @@ def _generator(
             "[OpenStudioLandscapes on LinkedIn](https://www.linkedin.com/company/106731439/).",
             "[Search for tag #OpenStudioLandscapes on LinkedIn](https://www.linkedin.com/search/results/all/?keywords=%23openstudiolandscapes).",
         ]
+    )
+
+    # Community
+
+    doc.add_heading(
+        text="ReadTheDocs",
+        level=1,
+    )
+
+    header = [
+        # "Module",
+        "ReadTheDocs",
+    ]
+
+    rows = []
+
+    for _, value in community_channels.items():
+        readthedocs_ = value["readthedocs"]
+        row = [
+            # module,
+            f"[{readthedocs_['latest']}]({readthedocs_['latest']})",
+        ]
+
+        rows.append(row)
+
+    doc.add_table(
+        header=header,
+        data=rows,
     )
 
     # Inject Feature specific documentation if there is any

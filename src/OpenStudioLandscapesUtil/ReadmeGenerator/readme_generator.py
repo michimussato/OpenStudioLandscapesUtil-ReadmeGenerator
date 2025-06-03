@@ -844,6 +844,7 @@ def _generator(
 
     header = [
         # "Module",
+        "Feature",
         "GitHub",
         "Discord",
         # "Slack",
@@ -852,14 +853,15 @@ def _generator(
 
     rows = []
 
-    for _, value in community_channels.items():
+    for key, value in community_channels.items():
         github_ = value["github"]
         discord_ = value["discord"]
         # slack_ = value["slack"]
         readthedocs_ = value["readthedocs"]
         row = [
             # module,
-            f"[{github_['repo_name']}]({gh_prefix}{github_['repo_name']})",  # github
+            key,
+            f"[{gh_prefix}{github_['repo_name']}]({gh_prefix}{github_['repo_name']})",  # github
             f"[{discord_['channel_name']}]({discord}/{discord_['channel_id']})",  # discord
             # f"[{slack_['channel_name']}]({slack}/{slack_['channel_id']})"  # slack
             f"[{readthedocs_['latest']}]({readthedocs_['latest']})",

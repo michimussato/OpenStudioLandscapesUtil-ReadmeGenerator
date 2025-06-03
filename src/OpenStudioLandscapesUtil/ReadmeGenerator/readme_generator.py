@@ -847,6 +847,7 @@ def _generator(
         "GitHub",
         "Discord",
         # "Slack",
+        "ReadTheDocs",
     ]
 
     rows = []
@@ -855,11 +856,13 @@ def _generator(
         github_ = value["github"]
         discord_ = value["discord"]
         # slack_ = value["slack"]
+        readthedocs_ = value["readthedocs"]
         row = [
             # module,
             f"[{github_['repo_name']}]({gh_prefix}{github_['repo_name']})",  # github
             f"[{discord_['channel_name']}]({discord}/{discord_['channel_id']})",  # discord
             # f"[{slack_['channel_name']}]({slack}/{slack_['channel_id']})"  # slack
+            f"[{readthedocs_['latest']}]({readthedocs_['latest']})",
         ]
 
         rows.append(row)
@@ -884,35 +887,35 @@ def _generator(
         ]
     )
 
-    # Community
-
-    doc.add_heading(
-        text="ReadTheDocs",
-        level=1,
-    )
-
-    header = [
-        # "Module",
-        "ReadTheDocs",
-        "latest",
-    ]
-
-    rows = []
-
-    for key, value in community_channels.items():
-        readthedocs_ = value["readthedocs"]
-        row = [
-            # module,
-            key,
-            f"[{readthedocs_['latest']}]({readthedocs_['latest']})",
-        ]
-
-        rows.append(row)
-
-    doc.add_table(
-        header=header,
-        data=rows,
-    )
+    # # ReadTheDocs
+    #
+    # doc.add_heading(
+    #     text="ReadTheDocs",
+    #     level=1,
+    # )
+    #
+    # header = [
+    #     # "Module",
+    #     "Feature",
+    #     "latest",
+    # ]
+    #
+    # rows = []
+    #
+    # for key, value in community_channels.items():
+    #     readthedocs_ = value["readthedocs"]
+    #     row = [
+    #         # module,
+    #         key,
+    #         f"[{readthedocs_['latest']}]({readthedocs_['latest']})",
+    #     ]
+    #
+    #     rows.append(row)
+    #
+    # doc.add_table(
+    #     header=header,
+    #     data=rows,
+    # )
 
     # Inject Feature specific documentation if there is any
     if readme_feature is not None:

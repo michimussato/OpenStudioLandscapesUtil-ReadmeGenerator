@@ -894,14 +894,16 @@ def _generator(
     header = [
         # "Module",
         "ReadTheDocs",
+        "latest",
     ]
 
     rows = []
 
-    for _, value in community_channels.items():
+    for key, value in community_channels.items():
         readthedocs_ = value["readthedocs"]
         row = [
             # module,
+            key,
             f"[{readthedocs_['latest']}]({readthedocs_['latest']})",
         ]
 

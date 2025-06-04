@@ -813,7 +813,7 @@ def _generator(
             #     "channel_name": "",
             # },
             # "readthedocs": {
-            #     "latest": "https://openstudiolandscapes-watchtower.readthedocs.io/en/latest/index.html",
+            #     "latest": "https://openstudiolandscapes-opencue.readthedocs.io/en/latest/index.html",
             # },
         },
         "OpenStudioLandscapes-Grafana": {

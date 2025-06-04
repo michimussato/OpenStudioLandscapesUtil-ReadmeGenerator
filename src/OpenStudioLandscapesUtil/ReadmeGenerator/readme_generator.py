@@ -800,6 +800,38 @@ def _generator(
             #     "latest": "https://openstudiolandscapes-watchtower.readthedocs.io/en/latest/index.html",
             # },
         },
+        "OpenStudioLandscapes-OpenCue": {
+            "github": {
+                "repo_name": "OpenStudioLandscapes-OpenCue",
+            },
+            "discord": {
+                "channel_id": "1379799680807997500",
+                "channel_name": "# openstudiolandscapes-opencue",
+            },
+            # "slack": {
+            #     "channel_id": "",
+            #     "channel_name": "",
+            # },
+            # "readthedocs": {
+            #     "latest": "https://openstudiolandscapes-watchtower.readthedocs.io/en/latest/index.html",
+            # },
+        },
+        "OpenStudioLandscapes-Grafana": {
+            "github": {
+                "repo_name": "OpenStudioLandscapes-Grafana",
+            },
+            "discord": {
+                "channel_id": "1379800002179760159",
+                "channel_name": "# openstudiolandscapes-grafana",
+            },
+            # "slack": {
+            #     "channel_id": "",
+            #     "channel_name": "",
+            # },
+            # "readthedocs": {
+            #     "latest": "https://openstudiolandscapes-grafana.readthedocs.io/en/latest/index.html",
+            # },
+        },
         # # Template
         # "OpenStudioLandscapes-template": {
         #     "github": {
@@ -836,7 +868,7 @@ def _generator(
 
     rows = []
 
-    for feature, value in community_channels.items():
+    for feature, value in sorted(community_channels.items()):
         github_ = value["github"]
         discord_ = value["discord"]
         # slack_ = value["slack"]

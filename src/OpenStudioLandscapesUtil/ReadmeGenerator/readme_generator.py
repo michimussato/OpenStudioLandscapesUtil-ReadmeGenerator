@@ -311,7 +311,7 @@ def _generator(
     doc.add_paragraph(
         text=textwrap.dedent(
             """
-            Add the following code to `OpenStudioLandscapes.engine.constants` (`FEATURES`):
+            Add the following code to `OpenStudioLandscapes.engine.features.FEATURES`:
             """
         )
     )
@@ -321,7 +321,13 @@ def _generator(
             """
             FEATURES.update(
                 "OpenStudioLandscapes-%s": {
-                    "enabled": True,
+                    "enabled": True|False,
+                    # - from ENVIRONMENT VARIABLE (.env):
+                    #   "enabled": get_bool_env("ENV_VAR")
+                    # - combined:
+                    #   "enabled": True|False or get_bool_env(
+                    #       "OPENSTUDIOLANDSCAPES__ENABLE_FEATURE_OPENSTUDIOLANDSCAPES_%s"
+                    #   )
                     "module": "OpenStudioLandscapes.%s.definitions",
                     "compose_scope": ComposeScope.DEFAULT,
                     "feature_config": OpenStudioLandscapesConfig.DEFAULT,
@@ -330,6 +336,7 @@ def _generator(
             """
         ) % (
             str(module_).replace("_", "-").replace(".constants", ""),
+            str(module_).replace("-", "_").replace(".constants", "").upper(),
             str(module_).replace(".constants", ""),
         ),  # Todo: a bit hacky
         lang="python",

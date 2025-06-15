@@ -971,7 +971,9 @@ def parse_args(args):
         "--versions",
         dest="versions",
         nargs='+',
-        help="Python version(s) to for testing",
+        help="Python version(s) to use for testing. "
+             "You can supply multiple versions (i.e. 3.11), "
+             "separated by spaces.",
         required=True,
     )
 

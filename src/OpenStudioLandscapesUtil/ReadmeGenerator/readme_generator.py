@@ -147,7 +147,7 @@ def _generator(
                 """
             ),
             image={
-                "OpenStudioLandscapes": "https://github.com/michimussato/OpenStudioLandscapes/raw/main/_images/logo128.png",
+                "OpenStudioLandscapes": "https://github.com/michimussato/OpenStudioLandscapes/raw/main/media/images/logo128.png",
             }["OpenStudioLandscapes"],
             link="https://github.com/michimussato/OpenStudioLandscapes",
         ).__str__()

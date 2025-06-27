@@ -638,6 +638,7 @@ def _generator(
             "discord": {
                 "channel_name": "# openstudiolandscapes-general",
                 "channel_id": "1357343454065328202",
+                "invite": "https://discord.com/invite/aYnJnaqE",
             },
             # "slack": {
             #     "channel_name": "# openstudiolandscapes-general",
@@ -654,6 +655,7 @@ def _generator(
             "discord": {
                 "channel_name": "# openstudiolandscapes-ayon",
                 "channel_id": "1357722468336271411",
+                "invite": "https://discord.gg/D4XrG99G",
             },
             # "slack": {
             #     "channel_name": "# openstudiolandscapes-ayon",
@@ -668,8 +670,9 @@ def _generator(
                 "repo_name": "OpenStudioLandscapes-Dagster",
             },
             "discord": {
-                "channel_id": "1358016764608249856",
                 "channel_name": "# openstudiolandscapes-dagster",
+                "channel_id": "1358016764608249856",
+                "invite": "https://discord.gg/qFGWTWu4",
             },
             # "slack": {
             #     "channel_id": "C08LZR5JFA6",
@@ -686,6 +689,7 @@ def _generator(
             "discord": {
                 "channel_name": "# openstudiolandscapes-kitsu",
                 "channel_id": "1357638253632688231",
+                "invite": "https://discord.gg/4UqHdsan",
             },
             # "slack": {
             #     "channel_name": "# openstudiolandscapes-kitsu",
@@ -884,7 +888,7 @@ def _generator(
             # module,
             feature,
             f"[{gh_prefix}{github_['repo_name']}]({gh_prefix}{github_['repo_name']})",  # github
-            f"[{discord_['channel_name']}]({discord}/{discord_['channel_id']})",  # discord
+            f"[{discord_['channel_name']}]({discord_['invite']})",  # discord
             # f"[{slack_['channel_name']}]({slack}/{slack_['channel_id']})"  # slack
             # f"[{readthedocs_['latest']}]({readthedocs_['latest']})",
         ]

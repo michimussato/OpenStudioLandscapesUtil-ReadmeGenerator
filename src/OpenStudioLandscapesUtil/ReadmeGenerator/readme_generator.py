@@ -644,9 +644,6 @@ def _generator(
             #     "channel_name": "# openstudiolandscapes-general",
             #     "channel_id": "C08LK80NBFF",
             # },
-            # "readthedocs": {
-            #     "latest": "https://openstudiolandscapes.readthedocs.io/en/latest/index.html",
-            # },
         },
         "OpenStudioLandscapes-Ayon": {
             "github": {
@@ -660,9 +657,6 @@ def _generator(
             # "slack": {
             #     "channel_name": "# openstudiolandscapes-ayon",
             #     "channel_id": "C08LLBC7CB0",
-            # },
-            # "readthedocs": {
-            #     "latest": "https://openstudiolandscapes-ayon.readthedocs.io/en/latest/index.html",
             # },
         },
         "OpenStudioLandscapes-Dagster": {
@@ -678,9 +672,6 @@ def _generator(
             #     "channel_id": "C08LZR5JFA6",
             #     "channel_name": "# openstudiolandscapes-dagster",
             # },
-            # "readthedocs": {
-            #     "latest": "https://openstudiolandscapes-dagster.readthedocs.io/en/latest/index.html",
-            # },
         },
         "OpenStudioLandscapes-Kitsu": {
             "github": {
@@ -695,9 +686,6 @@ def _generator(
             #     "channel_name": "# openstudiolandscapes-kitsu",
             #     "channel_id": "C08L6M70ZB9",
             # },
-            # "readthedocs": {
-            #     "latest": "https://openstudiolandscapes-kitsu.readthedocs.io/en/latest/index.html",
-            # },
         },
         # "OpenStudioLandscapes-Deadline-10-2": {
         #     "github": {
@@ -710,9 +698,6 @@ def _generator(
         #     # "slack": {
         #     #     "channel_id": "C08LZR963A6",
         #     #     "channel_name": "# openstudiolandscapes-deadline-10-2",
-        #     # },
-        #     # "readthedocs": {
-        #     #     "latest": "https://openstudiolandscapes-deadline-10-2.readthedocs.io/en/latest/index.html",
         #     # },
         # },
         # "OpenStudioLandscapes-Deadline-10-2-Worker": {
@@ -727,9 +712,6 @@ def _generator(
         #     #     "channel_id": "C08LZSBM998",
         #     #     "channel_name": "# openstudiolandscapes-deadline-10-2-worker",
         #     # },
-        #     # "readthedocs": {
-        #     #     "latest": "https://openstudiolandscapes-deadline-10-2-worker.readthedocs.io/en/latest/index.html",
-        #     # },
         # },
         # "OpenStudioLandscapes-filebrowser": {
         #     "github": {
@@ -742,9 +724,6 @@ def _generator(
         #     # "slack": {
         #     #     "channel_id": "",
         #     #     "channel_name": "",
-        #     # },
-        #     # "readthedocs": {
-        #     #     "latest": "https://openstudiolandscapes-filebrowser.readthedocs.io/en/latest/index.html",
         #     # },
         # },
         # "OpenStudioLandscapes-NukeRLM-8": {
@@ -759,8 +738,18 @@ def _generator(
         #     #     "channel_id": "C08LZDLFTMH",
         #     #     "channel_name": "# openstudiolandscapes-nukerlm-8",
         #     # },
-        #     # "readthedocs": {
-        #     #     "latest": "https://openstudiolandscapes-nukerlm-8.readthedocs.io/en/latest/index.html",
+        # },
+        # "OpenStudioLandscapes-n8n": {
+        #     "github": {
+        #         "repo_name": "OpenStudioLandscapes-n8n",
+        #     },
+        #     "discord": {
+        #         "channel_id": "",
+        #         "channel_name": "# openstudiolandscapes-n8n",
+        #     },
+        #     # "slack": {
+        #     #     "channel_id": "",
+        #     #     "channel_name": "# openstudiolandscapes-n8n",
         #     # },
         # },
         # "OpenStudioLandscapes-SESI-gcc-9-3-Houdini-20": {
@@ -775,9 +764,6 @@ def _generator(
         #     #     "channel_id": "C08LUTR1WG5",
         #     #     "channel_name": "# openstudiolandscapes-sesi-gcc-9-3-houdini-20",
         #     # },
-        #     # "readthedocs": {
-        #     #     "latest": "https://openstudiolandscapes-sesi-gcc-9-3-houdini-20.readthedocs.io/en/latest/index.html",
-        #     # },
         # },
         # "OpenStudioLandscapes-Syncthing": {
         #     "github": {
@@ -790,9 +776,6 @@ def _generator(
         #     # "slack": {
         #     #     "channel_id": "",
         #     #     "channel_name": "",
-        #     # },
-        #     # "readthedocs": {
-        #     #     "latest": "https://openstudiolandscapes-syncthing.readthedocs.io/en/latest/index.html",
         #     # },
         # },
         # "OpenStudioLandscapes-Watchtower": {
@@ -807,9 +790,6 @@ def _generator(
         #     #     "channel_id": "",
         #     #     "channel_name": "",
         #     # },
-        #     # "readthedocs": {
-        #     #     "latest": "https://openstudiolandscapes-watchtower.readthedocs.io/en/latest/index.html",
-        #     # },
         # },
         # "OpenStudioLandscapes-OpenCue": {
         #     "github": {
@@ -822,9 +802,6 @@ def _generator(
         #     # "slack": {
         #     #     "channel_id": "",
         #     #     "channel_name": "",
-        #     # },
-        #     # "readthedocs": {
-        #     #     "latest": "https://openstudiolandscapes-opencue.readthedocs.io/en/latest/index.html",
         #     # },
         # },
         # "OpenStudioLandscapes-Grafana": {
@@ -839,9 +816,6 @@ def _generator(
         #     #     "channel_id": "",
         #     #     "channel_name": "",
         #     # },
-        #     # "readthedocs": {
-        #     #     "latest": "https://openstudiolandscapes-grafana.readthedocs.io/en/latest/index.html",
-        #     # },
         # },
         # # Template
         # "OpenStudioLandscapes-template": {
@@ -855,9 +829,6 @@ def _generator(
         #     "slack": {
         #         "channel_id": "",
         #         "channel_name": "",
-        #     },
-        #     "readthedocs": {
-        #         "latest": "",
         #     },
         # },
     }
@@ -874,7 +845,6 @@ def _generator(
         "GitHub",
         "Discord",
         # "Slack",
-        # "ReadTheDocs",
     ]
 
     rows = []
@@ -883,14 +853,12 @@ def _generator(
         github_ = value["github"]
         discord_ = value["discord"]
         # slack_ = value["slack"]
-        # readthedocs_ = value["readthedocs"]
         row = [
             # module,
             feature,
             f"[{gh_prefix}{github_['repo_name']}]({gh_prefix}{github_['repo_name']})",  # github
             f"[{discord_['channel_name']}]({discord_['invite']})",  # discord
             # f"[{slack_['channel_name']}]({slack}/{slack_['channel_id']})"  # slack
-            # f"[{readthedocs_['latest']}]({readthedocs_['latest']})",
         ]
 
         rows.append(row)

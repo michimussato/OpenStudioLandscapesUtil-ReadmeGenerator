@@ -26,14 +26,13 @@ References:
 import argparse
 import logging
 import pathlib
+import tomllib
 from typing import Union, List
 
 import sys
 import importlib
 import textwrap
 import snakemd
-
-from configparser import ConfigParser
 
 from OpenStudioLandscapesUtil.ReadmeGenerator import __version__
 
@@ -65,11 +64,12 @@ def generate_readme(
       str: Path to README.md file
     """
 
-    cf = ConfigParser()
-    cf.read("setup.cfg")
+    with open("pyproject.toml", "rb") as f:
+        toml_dict = tomllib.load(f)
 
-    namespace = cf["pyscaffold"]["namespace"]
-    package = cf["pyscaffold"]["package"]
+    # toml_dict["tool"]["setuptools"]["packages"] will contain
+    # something like: ["OpenStudioLandscapes.Ayon"]
+    namespace, package = toml_dict["tool"]["setuptools"]["packages"][0].split(".")
 
     _logger.debug(f"{namespace = }")
     _logger.debug(f"{package = }")

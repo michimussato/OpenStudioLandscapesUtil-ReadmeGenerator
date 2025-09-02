@@ -43,6 +43,10 @@ __license__ = "MIT"
 _logger = logging.getLogger(__name__)
 
 
+class ReadmeGeneratorError(Exception):
+    pass
+
+
 # ---- Python API ----
 # The functions defined in this section can be imported by users in their
 # Python scripts/interactive interpreter, e.g. via
@@ -67,14 +71,12 @@ def generate_readme(
     with open("pyproject.toml", "rb") as f:
         toml_dict = tomllib.load(f)
 
+    if toml_dict["project"]["name"] == "OpenStudioLandscapes":
+        raise ReadmeGeneratorError("ReadmeGenerator is not built to work with OpenStudioLandscapes engine.")
+
     # toml_dict["tool"]["setuptools"]["packages"] will contain
     # something like: ["OpenStudioLandscapes.Ayon"]
-    try:
-        namespace, package = toml_dict["tool"]["setuptools"]["packages"][0].split(".")
-    except KeyError:
-        # Todo:
-        #  - [ ] Remove hard coded except clause
-        namespace, package = "OpenStudioLandscapes.engine".split(".")
+    namespace, package = toml_dict["tool"]["setuptools"]["packages"][0].split(".")
 
     _logger.debug(f"{namespace = }")
     _logger.debug(f"{package = }")

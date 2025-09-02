@@ -69,7 +69,12 @@ def generate_readme(
 
     # toml_dict["tool"]["setuptools"]["packages"] will contain
     # something like: ["OpenStudioLandscapes.Ayon"]
-    namespace, package = toml_dict["tool"]["setuptools"]["packages"][0].split(".")
+    try:
+        namespace, package = toml_dict["tool"]["setuptools"]["packages"][0].split(".")
+    except KeyError:
+        # Todo:
+        #  - [ ] Remove hard coded except clause
+        namespace, package = "OpenStudioLandscapes.engine".split(".")
 
     _logger.debug(f"{namespace = }")
     _logger.debug(f"{package = }")

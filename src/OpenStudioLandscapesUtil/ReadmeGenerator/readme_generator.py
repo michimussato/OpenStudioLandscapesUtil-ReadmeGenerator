@@ -772,6 +772,20 @@ def _generator(
         #     #     "channel_name": "# openstudiolandscapes-sesi-gcc-9-3-houdini-20",
         #     # },
         # },
+        "OpenStudioLandscapes-RustDeskServer": {
+            "github": {
+                "repo_name": "OpenStudioLandscapes-RustDeskServer",
+            },
+            "discord": {
+                "channel_id": "1414567463227621510",
+                "channel_name": "# openstudiolandscapes-rustdeskserver",
+                "invite": "https://discord.gg/nJ8Ffd2xY3",
+            },
+            # "slack": {
+            #     "channel_id": "C09E6HA0ZPW",
+            #     "channel_name": "# openstudiolandscapes-rustdeskserver",
+            # },
+        },
         # "OpenStudioLandscapes-Syncthing": {
         #     "github": {
         #         "repo_name": "OpenStudioLandscapes-Syncthing",
@@ -824,20 +838,21 @@ def _generator(
         #     #     "channel_name": "",
         #     # },
         # },
-        # # Template
-        # "OpenStudioLandscapes-template": {
-        #     "github": {
-        #         "repo_name": "",
-        #     },
-        #     "discord": {
-        #         "channel_id": "",
-        #         "channel_name": "",
-        #     },
-        #     "slack": {
-        #         "channel_id": "",
-        #         "channel_name": "",
-        #     },
-        # },
+        # Template
+        "OpenStudioLandscapes-Template": {
+            "github": {
+                "repo_name": "OpenStudioLandscapes-Template",
+            },
+            "discord": {
+                "channel_id": "1414568696860512358",
+                "channel_name": "# openstudiolandscapes-template",
+                "invite": "https://discord.gg/J59GYp3Wpy",
+            },
+            # "slack": {
+            #     "channel_id": "C09DMN2LH71",
+            #     "channel_name": "# openstudiolandscapes-rustdeskserver",
+            # },
+        },
     }
 
     # Community

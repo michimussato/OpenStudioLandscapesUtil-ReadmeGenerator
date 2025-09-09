@@ -786,6 +786,20 @@ def _generator(
             #     "channel_name": "# openstudiolandscapes-rustdeskserver",
             # },
         },
+        "OpenStudioLandscapes-Twingate": {
+            "github": {
+                "repo_name": "OpenStudioLandscapes-Twingate",
+            },
+            "discord": {
+                "channel_id": "1414768065174044844",
+                "channel_name": "# openstudiolandscapes-twingate",
+                "invite": "https://discord.gg/tREYa6UNJf",
+            },
+            # "slack": {
+            #     "channel_id": "C09E6HA0ZPW",
+            #     "channel_name": "# openstudiolandscapes-rustdeskserver",
+            # },
+        },
         # "OpenStudioLandscapes-Syncthing": {
         #     "github": {
         #         "repo_name": "OpenStudioLandscapes-Syncthing",

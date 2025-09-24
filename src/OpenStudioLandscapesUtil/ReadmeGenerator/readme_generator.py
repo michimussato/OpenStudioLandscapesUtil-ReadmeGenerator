@@ -645,7 +645,7 @@ def _generator(
             "discord": {
                 "channel_name": "# openstudiolandscapes-general",
                 "channel_id": "1357343454065328202",
-                "invite": "https://discord.com/invite/aYnJnaqE",
+                "invite": "https://discord.gg/F6bDRWsHac",
             },
             # "slack": {
             #     "channel_name": "# openstudiolandscapes-general",
@@ -659,7 +659,7 @@ def _generator(
             "discord": {
                 "channel_name": "# openstudiolandscapes-ayon",
                 "channel_id": "1357722468336271411",
-                "invite": "https://discord.gg/D4XrG99G",
+                "invite": "https://discord.gg/gd6etWAF3v",
             },
             # "slack": {
             #     "channel_name": "# openstudiolandscapes-ayon",
@@ -673,7 +673,7 @@ def _generator(
             "discord": {
                 "channel_name": "# openstudiolandscapes-dagster",
                 "channel_id": "1358016764608249856",
-                "invite": "https://discord.gg/qFGWTWu4",
+                "invite": "https://discord.gg/jwB3DwmKvs",
             },
             # "slack": {
             #     "channel_id": "C08LZR5JFA6",
@@ -687,7 +687,7 @@ def _generator(
             "discord": {
                 "channel_name": "# openstudiolandscapes-kitsu",
                 "channel_id": "1357638253632688231",
-                "invite": "https://discord.gg/4UqHdsan",
+                "invite": "https://discord.gg/6cc6mkReJ7",
             },
             # "slack": {
             #     "channel_name": "# openstudiolandscapes-kitsu",
@@ -699,8 +699,9 @@ def _generator(
         #         "repo_name": "OpenStudioLandscapes-Deadline-10-2",
         #     },
         #     "discord": {
-        #         "channel_id": "1357343453364748419",
+        #         "channel_id": "1358017409276973088",
         #         "channel_name": "# openstudiolandscapes-deadline-10-2",
+        #         "invite": "https://discord.gg/p2UjxHk4Y3",
         #     },
         #     # "slack": {
         #     #     "channel_id": "C08LZR963A6",
@@ -712,8 +713,9 @@ def _generator(
         #         "repo_name": "OpenStudioLandscapes-Deadline-10-2-Worker",
         #     },
         #     "discord": {
-        #         "channel_id": "1357343453364748419",
+        #         "channel_id": "1358024594409259059",
         #         "channel_name": "# openstudiolandscapes-deadline-10-2-worker",
+        #         "invite": "https://discord.gg/ttkbfkzUmf",
         #     },
         #     # "slack": {
         #     #     "channel_id": "C08LZSBM998",
@@ -727,6 +729,7 @@ def _generator(
         #     "discord": {
         #         "channel_id": "1364746200175083520",
         #         "channel_name": "# openstudiolandscapes-filebrowser",
+        #         "invite": "https://discord.gg/stzNsZBmwk",
         #     },
         #     # "slack": {
         #     #     "channel_id": "",
@@ -740,6 +743,7 @@ def _generator(
         #     "discord": {
         #         "channel_id": "1358017656732782672",
         #         "channel_name": "# openstudiolandscapes-nukerlm-8",
+        #         "invite": "https://discord.gg/bMVqrNrMg2",
         #     },
         #     # "slack": {
         #     #     "channel_id": "C08LZDLFTMH",
@@ -751,8 +755,9 @@ def _generator(
         #         "repo_name": "OpenStudioLandscapes-n8n",
         #     },
         #     "discord": {
-        #         "channel_id": "",
+        #         "channel_id": "1420384480526602320",
         #         "channel_name": "# openstudiolandscapes-n8n",
+        #         "channel_name": "https://discord.gg/zVFJUEaAwK",
         #     },
         #     # "slack": {
         #     #     "channel_id": "",
@@ -764,8 +769,9 @@ def _generator(
         #         "repo_name": "OpenStudioLandscapes-SESI-gcc-9-3-Houdini-20",
         #     },
         #     "discord": {
-        #         "channel_id": "1357343453364748419",
+        #         "channel_id": "1358018027190484993",
         #         "channel_name": "# openstudiolandscapes-sesi-gcc-9-3-houdini-20",
+        #         "invite": "https://discord.gg/Zwmn3VAMDx",
         #     },
         #     # "slack": {
         #     #     "channel_id": "C08LUTR1WG5",
@@ -780,6 +786,20 @@ def _generator(
                 "channel_id": "1414567463227621510",
                 "channel_name": "# openstudiolandscapes-rustdeskserver",
                 "invite": "https://discord.gg/nJ8Ffd2xY3",
+            },
+            # "slack": {
+            #     "channel_id": "C09E6HA0ZPW",
+            #     "channel_name": "# openstudiolandscapes-rustdeskserver",
+            # },
+        },
+        "OpenStudioLandscapes-Teleport": {
+            "github": {
+                "repo_name": "OpenStudioLandscapes-Teleport",
+            },
+            "discord": {
+                "channel_id": "1420385295026884659",
+                "channel_name": "# openstudiolandscapes-teleport",
+                "invite": "https://discord.gg/SNMCw5aDfm",
             },
             # "slack": {
             #     "channel_id": "C09E6HA0ZPW",
@@ -807,6 +827,7 @@ def _generator(
         #     "discord": {
         #         "channel_id": "1364746871381168138",
         #         "channel_name": "# openstudiolandscapes-syncthing",
+        #         "invite": "https://discord.gg/upb9MCqb3X",
         #     },
         #     # "slack": {
         #     #     "channel_id": "",
@@ -820,6 +841,7 @@ def _generator(
         #     "discord": {
         #         "channel_id": "1364747275938562079",
         #         "channel_name": "# openstudiolandscapes-watchtower",
+        #         "invite": "https://discord.gg/5CQEjBaHg8",
         #     },
         #     # "slack": {
         #     #     "channel_id": "",
@@ -833,6 +855,7 @@ def _generator(
         #     "discord": {
         #         "channel_id": "1379799680807997500",
         #         "channel_name": "# openstudiolandscapes-opencue",
+        #         "invite": "https://discord.gg/3DdCZKkVyZ",
         #     },
         #     # "slack": {
         #     #     "channel_id": "",
@@ -846,6 +869,7 @@ def _generator(
         #     "discord": {
         #         "channel_id": "1379800002179760159",
         #         "channel_name": "# openstudiolandscapes-grafana",
+        #         "invite": "https://discord.gg/gEDQ8vJWDb",
         #     },
         #     # "slack": {
         #     #     "channel_id": "",

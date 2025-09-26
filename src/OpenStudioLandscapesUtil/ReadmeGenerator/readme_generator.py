@@ -256,7 +256,7 @@ def _generator(
             f"""\
             # cd .features
             git clone {gh_repo}\
-            """
+"""
         ),
         lang="shell",
     )
@@ -276,7 +276,7 @@ def _generator(
             python3.11 -m venv .venv
             source .venv/bin/activate
             python -m pip install --upgrade pip setuptools\
-            """
+"""
         ),
         lang="shell",
     )
@@ -295,7 +295,7 @@ def _generator(
             # cd .features/{repo_}
             pip install -e "../../[dev]"
             pip install -e ".[dev]"\
-            """
+"""
         ),
         lang="shell",
     )
@@ -340,7 +340,7 @@ def _generator(
                     "feature_config": OpenStudioLandscapesConfig.DEFAULT,
                 }
             )\
-            """
+"""
         ) % (
             str(module_).replace("_", "-").replace(".constants", ""),
             str(module_).replace("-", "_").replace(".constants", "").upper(),
@@ -374,7 +374,7 @@ def _generator(
         code=textwrap.dedent(
             f"""\
             pre-commit install\
-            """
+"""
         ),
         lang="shell",
     )
@@ -397,7 +397,7 @@ def _generator(
         code=textwrap.dedent(
             f"""\
             nox --no-error-on-missing-interpreters --report .nox/nox-report.json\
-            """
+"""
         ),
         lang="shell",
     )
@@ -413,7 +413,7 @@ def _generator(
         code=textwrap.dedent(
             f"""\
             nox -v --add-timestamp --session readme\
-            """
+"""
         ),
         lang="shell",
     )
@@ -429,7 +429,7 @@ def _generator(
         code=textwrap.dedent(
             f"""\
             nox -v --add-timestamp --session docs\
-            """
+"""
         ),
         lang="shell",
     )
@@ -445,7 +445,7 @@ def _generator(
         code=textwrap.dedent(
             f"""\
             nox -v --add-timestamp --session lint\
-            """
+"""
         ),
         lang="shell",
     )
@@ -480,7 +480,7 @@ def _generator(
         code=textwrap.dedent(
             f"""\
             nox -v --add-timestamp --session sbom\
-            """
+"""
         ),
         lang="shell",
     )

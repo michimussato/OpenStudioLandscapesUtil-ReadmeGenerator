@@ -210,7 +210,7 @@ def _generator(
         text=textwrap.dedent(
             """
             You feel like writing your own Feature? Go and check out the 
-            [OpenStudioLandscapes-Template](https://github.com/michimussato/OpenStudioLandscapes-Template). 
+            [OpenStudioLandscapes-Template](https://github.com/michimussato/OpenStudioLandscapes-Template).
             """
         )
     )
@@ -253,9 +253,9 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            f"""
+            f"""\
             # cd .features
-            git clone {gh_repo}
+            git clone {gh_repo}\
             """
         ),
         lang="shell",
@@ -271,11 +271,11 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            f"""
+            f"""\
             # cd .features/{repo_}
             python3.11 -m venv .venv
             source .venv/bin/activate
-            python -m pip install --upgrade pip setuptools
+            python -m pip install --upgrade pip setuptools\
             """
         ),
         lang="shell",
@@ -291,10 +291,10 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            f"""
+            f"""\
             # cd .features/{repo_}
             pip install -e "../../[dev]"
-            pip install -e ".[dev]"
+            pip install -e ".[dev]"\
             """
         ),
         lang="shell",
@@ -325,7 +325,7 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            """
+            """\
             FEATURES.update(
                 "OpenStudioLandscapes-%s": {
                     "enabled": True|False,
@@ -339,7 +339,7 @@ def _generator(
                     "compose_scope": ComposeScope.DEFAULT,
                     "feature_config": OpenStudioLandscapesConfig.DEFAULT,
                 }
-            )
+            )\
             """
         ) % (
             str(module_).replace("_", "-").replace(".constants", ""),
@@ -372,8 +372,8 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            f"""
-            pre-commit install
+            f"""\
+            pre-commit install\
             """
         ),
         lang="shell",
@@ -395,8 +395,8 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            f"""
-            nox --no-error-on-missing-interpreters --report .nox/nox-report.json
+            f"""\
+            nox --no-error-on-missing-interpreters --report .nox/nox-report.json\
             """
         ),
         lang="shell",
@@ -411,8 +411,8 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            f"""
-            nox -v --add-timestamp --session readme
+            f"""\
+            nox -v --add-timestamp --session readme\
             """
         ),
         lang="shell",
@@ -427,8 +427,8 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            f"""
-            nox -v --add-timestamp --session docs
+            f"""\
+            nox -v --add-timestamp --session docs\
             """
         ),
         lang="shell",
@@ -443,8 +443,8 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            f"""
-            nox -v --add-timestamp --session lint
+            f"""\
+            nox -v --add-timestamp --session lint\
             """
         ),
         lang="shell",
@@ -478,8 +478,8 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
-            f"""
-            nox -v --add-timestamp --session sbom
+            f"""\
+            nox -v --add-timestamp --session sbom\
             """
         ),
         lang="shell",

@@ -4,6 +4,9 @@
     * [venv](#venv)
   * [Installation](#installation)
   * [Usage](#usage)
+  * [Tagging](#tagging)
+    * [Release Candidata](#release-candidata)
+    * [Main Release](#main-release)
 <!-- TOC -->
 
 ---

@@ -48,3 +48,24 @@ options:
   --versions VERSIONS [VERSIONS ...]
                         Python version(s) to use for testing. You can supply multiple versions (i.e. 3.11), separated by spaces.
 ```
+
+## Tagging
+
+### Release Candidata
+
+```shell
+NEW_TAG=X.X.X-rcX
+
+git tag --annotate "v${NEW_TAG}" --message "Release Candidate Version v${NEW_TAG}" --force
+git push --tags --force
+```
+
+### Main Release
+
+```shell
+NEW_TAG=X.X.X
+
+git tag --annotate "v${NEW_TAG}" --message "Main Release Version v${NEW_TAG}" --force
+git tag --annotate "latest" --message "Latest Release Version (pointing to v${NEW_TAG})" v${NEW_TAG}^{} --force
+git push --tags --force
+```

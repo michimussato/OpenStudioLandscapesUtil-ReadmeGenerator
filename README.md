@@ -58,7 +58,9 @@ options:
 
 ```shell
 NEW_TAG=X.X.X-rcX
+```
 
+```shell
 git tag --annotate "v${NEW_TAG}" --message "Release Candidate Version v${NEW_TAG}" --force
 git push --tags --force
 ```
@@ -67,7 +69,9 @@ git push --tags --force
 
 ```shell
 NEW_TAG=X.X.X
+```
 
+```shell
 git tag --annotate "v${NEW_TAG}" --message "Main Release Version v${NEW_TAG}" --force
 git tag --annotate "latest" --message "Latest Release Version (pointing to v${NEW_TAG})" v${NEW_TAG}^{} --force
 git push --tags --force

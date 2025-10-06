@@ -5,7 +5,7 @@
   * [Installation](#installation)
   * [Usage](#usage)
   * [Tagging](#tagging)
-    * [Release Candidata](#release-candidata)
+    * [Release Candidate](#release-candidate)
     * [Main Release](#main-release)
 <!-- TOC -->
 
@@ -19,6 +19,12 @@ Feature.
 
 This facilitates maintenance of `README.md` files
 across multiple OpenStudioLandscapes Feature repositories.
+
+This package was created using PyScaffold:
+
+```shell
+putup --package Readme_Generator --venv .venv --no-tox --license AGPL-3.0-or-later --force --namespace OpenStudioLandscapesUtil OpenStudioLandscapesUtil-ReadmeGenerator
+```
 
 ## Requirements
 
@@ -54,7 +60,7 @@ options:
 
 ## Tagging
 
-### Release Candidata
+### Release Candidate
 
 ```shell
 NEW_TAG=X.X.X-rcX

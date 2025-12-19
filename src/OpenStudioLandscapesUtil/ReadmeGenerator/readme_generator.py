@@ -27,6 +27,7 @@ import argparse
 import logging
 import pathlib
 import tomllib
+from types import ModuleType
 from typing import Union, List
 
 import sys
@@ -69,6 +70,8 @@ def generate_readme(
       str: Path to README.md file
     """
 
+    # cwd is root dir of repo where `noxfile.py` lives,
+    # hence, there will be a `pyproject.toml`.
     with open("pyproject.toml", "rb") as f:
         toml_dict = tomllib.load(f)
 
@@ -84,7 +87,8 @@ def generate_readme(
     _logger.debug(f"{package = }")
 
     try:
-        constants = importlib.import_module(f"{namespace}.{package}.constants")
+        models = importlib.import_module(f"{namespace}.{package}.config.models")
+        # constants = importlib.import_module(f"{namespace}.{package}.constants")
     except ModuleNotFoundError as e:
         _logger.exception(f"Module OpenStudioLandscapes not found: {e}")
         raise e
@@ -95,7 +99,8 @@ def generate_readme(
         readme_feature = None
 
     readme = _generator(
-        constants=constants,
+        models=models,
+        # constants=constants,
         python_versions=versions,
         readme_feature=readme_feature,
     )
@@ -104,12 +109,13 @@ def generate_readme(
 
 
 def _generator(
-        constants,
+        models: ModuleType,
+        constants: ModuleType,
         python_versions: List[str],
         readme_feature: Union[snakemd.Document, None] = None,
 ) -> pathlib.Path:
 
-    rel_path = pathlib.Path(constants.__file__)
+    rel_path = pathlib.Path(models.__file__)
     parts_ = rel_path.parts
 
     file_ = parts_[-1]
@@ -120,7 +126,7 @@ def _generator(
 
     gh_repo = f"{gh_prefix}{repo_}.git"
 
-    gh_path_constants = "/".join([
+    gh_path_models = "/".join([
         repo_,
         "tree",
         "main",
@@ -317,39 +323,39 @@ def _generator(
         level=2,
     )
 
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            """
-            Add the following code to `OpenStudioLandscapes.engine.features.FEATURES`:
-            """
-        )
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            """\
-            FEATURES.update(
-                "OpenStudioLandscapes-%s": {
-                    "enabled": True|False,
-                    # - from ENVIRONMENT VARIABLE (.env):
-                    #   "enabled": get_bool_env("ENV_VAR")
-                    # - combined:
-                    #   "enabled": True|False or get_bool_env(
-                    #       "OPENSTUDIOLANDSCAPES__ENABLE_FEATURE_OPENSTUDIOLANDSCAPES_%s"
-                    #   )
-                    "module": "OpenStudioLandscapes.%s.definitions",
-                    "compose_scope": ComposeScope.DEFAULT,
-                    "feature_config": OpenStudioLandscapesConfig.DEFAULT,
-                }
-            )\
-"""
-        ) % (
-            str(module_).replace("_", "-").replace(".constants", ""),
-            str(module_).replace("-", "_").replace(".constants", "").upper(),
-            str(module_).replace(".constants", ""),
-        ),  # Todo: a bit hacky
-        lang="python",
-    )
+#     doc.add_paragraph(
+#         text=textwrap.dedent(
+#             """
+#             Add the following code to `OpenStudioLandscapes.engine.features.FEATURES`:
+#             """
+#         )
+#     )
+#
+#     doc.add_code(
+#         code=textwrap.dedent(
+#             """\
+#             FEATURES.update(
+#                 "OpenStudioLandscapes-%s": {
+#                     "enabled": True|False,
+#                     # - from ENVIRONMENT VARIABLE (.env):
+#                     #   "enabled": get_bool_env("ENV_VAR")
+#                     # - combined:
+#                     #   "enabled": True|False or get_bool_env(
+#                     #       "OPENSTUDIOLANDSCAPES__ENABLE_FEATURE_OPENSTUDIOLANDSCAPES_%s"
+#                     #   )
+#                     "module": "OpenStudioLandscapes.%s.definitions",
+#                     "compose_scope": ComposeScope.DEFAULT,
+#                     "feature_config": OpenStudioLandscapesConfig.DEFAULT,
+#                 }
+#             )\
+# """
+#         ) % (
+#             str(module_).replace("_", "-").replace(".constants", ""),
+#             str(module_).replace("-", "_").replace(".constants", "").upper(),
+#             str(module_).replace(".constants", ""),
+#         ),  # Todo: a bit hacky
+#         lang="python",
+#     )
 
     ## Testing
 
@@ -420,21 +426,21 @@ def _generator(
         lang="shell",
     )
 
-    #### Generate Sphinx Documentation
-
-    doc.add_heading(
-        text="Generate Sphinx Documentation",
-        level=4,
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            f"""\
-            nox -v --add-timestamp --session docs\
-"""
-        ),
-        lang="shell",
-    )
+#     #### Generate Sphinx Documentation
+#
+#     doc.add_heading(
+#         text="Generate Sphinx Documentation",
+#         level=4,
+#     )
+#
+#     doc.add_code(
+#         code=textwrap.dedent(
+#             f"""\
+#             nox -v --add-timestamp --session docs\
+# """
+#         ),
+#         lang="shell",
+#     )
 
     #### Pylint
 
@@ -539,102 +545,109 @@ def _generator(
         # ]
     )
 
-    ## Variables
+    ## Configuration
 
     doc.add_heading(
-        text="Variables",
+        text="Configuration",
         level=2,
     )
 
     doc.add_paragraph(
         text=textwrap.dedent(
             f"""
-            The following variables are being declared in 
-            `OpenStudioLandscapes.{module_}.constants` and are accessible 
-            throughout the [`{repo_}`]({gh_prefix}{gh_path_constants}) package.
+            The following settings are available in 
+            `OpenStudioLandscapes.{module_}` and are accessible 
+            throughout the [`{repo_}`]({gh_prefix}{gh_path_models}) package.
             """
         )
     )
 
-    header = [
-        "Variable",
-        "Type"
-    ]
+    CONFIG_STR: str = models.CONFIG_STR
 
-    rows = []
-
-    for var in constants.__all__:
-        val = constants.__dict__[var]
-
-        rows.append(
-            [
-                snakemd.Inline(
-                    text=var,
-                ).code(),
-                snakemd.Inline(
-                    text=type(val).__name__,
-                ).code(),
-            ]
-        )
-
-    doc.add_table(
-        header=header,
-        data=rows,
-        align=[
-            snakemd.Table.Align.LEFT,
-            snakemd.Table.Align.LEFT,
-        ],
-        indent=0,
+    doc.add_code(
+        code=CONFIG_STR,
+        lang="yaml",
     )
 
-    ### FEATURE_CONFIGS
-
-    doc.add_heading(
-        text="Feature Configs",
-        level=3,
-    )
-
-    header_environment = [
-        "Variable",
-        "Type",
-        "Value"
-    ]
-
-    for k_feature_config, v_feature_config in constants.FEATURE_CONFIGS.items():
-
-        doc.add_heading(
-            text=f"Feature Config: {k_feature_config}",
-            level=4,
-        )
-
-        rows_environment = []
-
-        for k, v in v_feature_config.items():
-
-            rows_environment.append(
-                [
-                    snakemd.Inline(
-                        text=k,
-                    ).code(),
-                    snakemd.Inline(
-                        text=type(v).__name__,
-                    ).code(),
-                    snakemd.Inline(
-                        text=v,
-                    ).code(),
-                ]
-            )
-
-        doc.add_table(
-            header=header_environment,
-            data=rows_environment,
-            align=[
-                snakemd.Table.Align.LEFT,
-                snakemd.Table.Align.LEFT,
-                snakemd.Table.Align.LEFT,
-            ],
-            indent=0,
-        )
+    # header = [
+    #     "Variable",
+    #     "Type"
+    # ]
+    #
+    # rows = []
+    #
+    # for var in constants.__all__:
+    #     val = constants.__dict__[var]
+    #
+    #     rows.append(
+    #         [
+    #             snakemd.Inline(
+    #                 text=var,
+    #             ).code(),
+    #             snakemd.Inline(
+    #                 text=type(val).__name__,
+    #             ).code(),
+    #         ]
+    #     )
+    #
+    # doc.add_table(
+    #     header=header,
+    #     data=rows,
+    #     align=[
+    #         snakemd.Table.Align.LEFT,
+    #         snakemd.Table.Align.LEFT,
+    #     ],
+    #     indent=0,
+    # )
+    #
+    # ### FEATURE_CONFIGS
+    #
+    # doc.add_heading(
+    #     text="Feature Configs",
+    #     level=3,
+    # )
+    #
+    # header_environment = [
+    #     "Variable",
+    #     "Type",
+    #     "Value"
+    # ]
+    #
+    # for k_feature_config, v_feature_config in constants.FEATURE_CONFIGS.items():
+    #
+    #     doc.add_heading(
+    #         text=f"Feature Config: {k_feature_config}",
+    #         level=4,
+    #     )
+    #
+    #     rows_environment = []
+    #
+    #     for k, v in v_feature_config.items():
+    #
+    #         rows_environment.append(
+    #             [
+    #                 snakemd.Inline(
+    #                     text=k,
+    #                 ).code(),
+    #                 snakemd.Inline(
+    #                     text=type(v).__name__,
+    #                 ).code(),
+    #                 snakemd.Inline(
+    #                     text=v,
+    #                 ).code(),
+    #             ]
+    #         )
+    #
+    #     doc.add_table(
+    #         header=header_environment,
+    #         data=rows_environment,
+    #         align=[
+    #             snakemd.Table.Align.LEFT,
+    #             snakemd.Table.Align.LEFT,
+    #             snakemd.Table.Align.LEFT,
+    #         ],
+    #         indent=0,
+    #     )
 
     # Community
 

@@ -41,7 +41,7 @@ testing = [
     "setuptools",
     "pytest",
     "pytest-cov",
-    "OpenStudioLandscapes @ git+https://github.com/michimussato/OpenStudioLandscapes@v1.7.0-rc1",
+    "OpenStudioLandscapes @ git+https://github.com/michimussato/OpenStudioLandscapes",
     # OpenStudioLandscapes
 ]
 dev = [

@@ -18,6 +18,13 @@ Note:
 References:
     - https://setuptools.pypa.io/en/latest/userguide/entry_point.html
     - https://pip.pypa.io/en/stable/reference/pip_install
+
+Manual README creation:
+```shell
+cd .features
+
+for d in ./* ; do pushd ${d} || exit 1 && generate-readme -v --versions 3.11 && popd; done
+```
 """
 
 # Todo:
@@ -218,9 +225,11 @@ def _generator(
         )
     )
 
-    doc.add_paragraph(
+    doc.add_quote(
         text=textwrap.dedent(
-            """
+            """\
+            [!NOTE]
+            
             You feel like writing your own Feature? Go and check out the 
             [OpenStudioLandscapes-Template](https://github.com/michimussato/OpenStudioLandscapes-Template).
             """

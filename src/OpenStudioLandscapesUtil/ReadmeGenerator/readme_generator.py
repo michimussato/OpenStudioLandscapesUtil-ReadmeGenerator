@@ -306,14 +306,15 @@ def _generator(
         lang="yaml",
     )
 
+    doc.add_horizontal_rule()
+
     # Inject Feature specific documentation if there is any
     if readme_feature is not None:
-        doc.add_horizontal_rule()
 
-        doc.add_heading(
-            text="Official Resources",
-            level=2,
-        )
+        # doc.add_heading(
+        #     text="Official Resources",
+        #     level=2,
+        # )
 
         doc = readme_feature.readme_feature(doc)
         doc.add_horizontal_rule()
@@ -653,7 +654,7 @@ def _generator(
         text=textwrap.dedent(
             f"""
             Last changed:
-            **{datetime.datetime.now(tz=datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S %Z')}**.
+            **{datetime.datetime.now(tz=datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S %Z')}**
             """
         )
     )

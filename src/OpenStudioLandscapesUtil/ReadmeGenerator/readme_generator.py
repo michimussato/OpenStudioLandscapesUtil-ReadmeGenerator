@@ -84,8 +84,10 @@ def generate_readme(
         toml_dict = tomllib.load(f)
 
     if toml_dict["project"]["name"] == "OpenStudioLandscapes":
-        raise ReadmeGeneratorError("ReadmeGenerator is not built to work with OpenStudioLandscapes engine - "
-                                   "only with its Features.")
+        raise ReadmeGeneratorError(
+            "ReadmeGenerator is not built to work with OpenStudioLandscapes engine - "
+            "only with its Features."
+        )
 
     # toml_dict["tool"]["setuptools"]["packages"] will contain
     # something like: ["OpenStudioLandscapes.Ayon"]
@@ -101,9 +103,10 @@ def generate_readme(
         raise e
 
     try:
-        readme_feature = importlib.import_module(f"{namespace}.{package}.readme_feature")
-    except ImportError:
+        readme_feature = importlib.import_module(f"{namespace}.{package}.doc.readme")
+    except ImportError as e:
         readme_feature = None
+        _logger.exception(f"Import OpenStudioLandscapes failed: {e}")
 
     readme = _generator(
         models=models,
@@ -311,9 +314,16 @@ def _generator(
     # Inject Feature specific documentation if there is any
     if readme_feature is not None:
 
+        _logger.info("Adding external documentation...")
+
         # the injected elements come with h1
-        doc = readme_feature.readme_feature(doc)
+        doc = readme_feature.readme_feature(
+            doc=doc,
+            main_header="External Resources",
+        )
         doc.add_horizontal_rule()
+
+        _logger.info("Done.")
 
     # Community
 

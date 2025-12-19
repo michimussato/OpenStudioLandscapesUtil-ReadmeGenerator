@@ -311,11 +311,7 @@ def _generator(
     # Inject Feature specific documentation if there is any
     if readme_feature is not None:
 
-        # doc.add_heading(
-        #     text="Official Resources",
-        #     level=2,
-        # )
-
+        # the injected elements come with h1
         doc = readme_feature.readme_feature(doc)
         doc.add_horizontal_rule()
 

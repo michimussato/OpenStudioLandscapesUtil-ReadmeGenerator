@@ -24,6 +24,7 @@ References:
 #  - [ ] This is just a quick and dirty implementation for now.
 
 import argparse
+import datetime
 import logging
 import pathlib
 import tomllib
@@ -88,7 +89,6 @@ def generate_readme(
 
     try:
         models = importlib.import_module(f"{namespace}.{package}.config.models")
-        # constants = importlib.import_module(f"{namespace}.{package}.constants")
     except ModuleNotFoundError as e:
         _logger.exception(f"Module OpenStudioLandscapes not found: {e}")
         raise e
@@ -100,7 +100,6 @@ def generate_readme(
 
     readme = _generator(
         models=models,
-        # constants=constants,
         python_versions=versions,
         readme_feature=readme_feature,
     )
@@ -109,22 +108,27 @@ def generate_readme(
 
 
 def _generator(
+        *,
         models: ModuleType,
-        constants: ModuleType,
         python_versions: List[str],
         readme_feature: Union[snakemd.Document, None] = None,
 ) -> pathlib.Path:
 
     rel_path = pathlib.Path(models.__file__)
+    _logger.info(f"Using file for reading CONFIG_STR: {rel_path = }")
+
     parts_ = rel_path.parts
+
+    _logger.info(f"{parts_ = }")
 
     file_ = parts_[-1]
     module_ = parts_[-2]
-    repo_ = parts_[-5]
+    repo_ = parts_[-6]
 
     gh_prefix = "https://github.com/michimussato/"
 
     gh_repo = f"{gh_prefix}{repo_}.git"
+    _logger.info(f"{gh_repo = }")
 
     gh_path_models = "/".join([
         repo_,
@@ -223,6 +227,151 @@ def _generator(
         )
     )
 
+    ## Configuration
+
+    doc.add_heading(
+        text="Configuration",
+        level=2,
+    )
+
+    doc.add_paragraph(
+        text=textwrap.dedent(
+            """
+            OpenStudioLandscapes will search for a local config store.
+            The default location is `~/.config/OpenStudioLandscapes/config-store/`
+            but you can specify a different location if you need to.
+            """
+        )
+    )
+
+    doc.add_paragraph(
+        text=textwrap.dedent(
+            """
+            A local config store location will be created if it doesn't exist, 
+            together with the `config.yml` files for each
+            individual Feature.
+            """
+        )
+    )
+
+    doc.add_quote(
+        text=textwrap.dedent(
+            """\
+            [!TIP]
+            
+            The config store root will be initialized as a local Git
+            controlled repository. This makes it easy to track changes
+            you made to the `config.yml`.
+            """
+        )
+    )
+
+    doc.add_quote(
+        text=textwrap.dedent(
+            """\
+            [!TIP]
+            
+            To specify a config store location different than
+            the default, you can do so be setting the environment variable
+            `OPENSTUDIOLANDSCAPES__CONFIGSTORE_ROOT`:
+            
+            ```shell
+            OPENSTUDIOLANDSCAPES__CONFIGSTORE_ROOT="~/.config/OpenStudioLandscapes/my-custom-config-store"
+            ```
+            """
+        )
+    )
+
+    doc.add_paragraph(
+        text=textwrap.dedent(
+            f"""
+            The following settings are available in 
+            `{repo_}` and are accessible 
+            throughout the [`{repo_}`]({gh_prefix}{gh_path_models}) package.
+            """
+        )
+    )
+
+    doc.add_code(
+        code=models.CONFIG_STR,
+        lang="yaml",
+    )
+
+    # Inject Feature specific documentation if there is any
+    if readme_feature is not None:
+        doc.add_horizontal_rule()
+
+        doc.add_heading(
+            text="Official Resources",
+            level=2,
+        )
+
+        doc = readme_feature.readme_feature(doc)
+        doc.add_horizontal_rule()
+
+    # Community
+
+    doc.add_heading(
+        text="Community",
+        level=1,
+    )
+
+    header = [
+        "Feature",
+        "GitHub",
+        "Discord",
+        # "Slack",
+    ]
+
+    rows = []
+
+    for feature, value in sorted(community_channels.items()):
+        if not value["enabled"]:
+            continue
+        if not value["public"]:
+            continue
+        github_ = value["github"]
+        discord_ = value["discord"]
+        # slack_ = value["slack"]
+        row = [
+            # module,
+            feature,
+            f"[{gh_prefix}{github_['repo_name']}]({gh_prefix}{github_['repo_name']})",  # github
+            f"[{discord_['channel_name']}]({discord_['invite']})",  # discord
+            # f"[{slack_['channel_name']}]({slack}/{slack_['channel_id']})"  # slack
+        ]
+
+        rows.append(row)
+
+    doc.add_table(
+        header=header,
+        data=rows,
+    )
+
+    doc.add_paragraph(
+        text=textwrap.dedent(
+            f"""
+            To follow up on the previous LinkedIn publications, visit:
+            """
+        )
+    )
+
+    doc.add_unordered_list(
+        [
+            "[OpenStudioLandscapes on LinkedIn](https://www.linkedin.com/company/106731439/).",
+            "[Search for tag #OpenStudioLandscapes on LinkedIn](https://www.linkedin.com/search/results/all/?keywords=%23openstudiolandscapes).",
+        ]
+    )
+
+    doc.add_horizontal_rule()
+
+    # Technical Reference
+
+    doc.add_heading(
+        text="Technical Reference",
+        level=1,
+    )
+
     ## Requirements
 
     doc.add_heading(
@@ -316,47 +465,6 @@ def _generator(
         )
     )
 
-    ## Add to OpenStudioLandscapes
-
-    doc.add_heading(
-        text="Add to OpenStudioLandscapes",
-        level=2,
-    )
-
-#     doc.add_paragraph(
-#         text=textwrap.dedent(
-#             """
-#             Add the following code to `OpenStudioLandscapes.engine.features.FEATURES`:
-#             """
-#         )
-#     )
-#
-#     doc.add_code(
-#         code=textwrap.dedent(
-#             """\
-#             FEATURES.update(
-#                 "OpenStudioLandscapes-%s": {
-#                     "enabled": True|False,
-#                     # - from ENVIRONMENT VARIABLE (.env):
-#                     #   "enabled": get_bool_env("ENV_VAR")
-#                     # - combined:
-#                     #   "enabled": True|False or get_bool_env(
-#                     #       "OPENSTUDIOLANDSCAPES__ENABLE_FEATURE_OPENSTUDIOLANDSCAPES_%s"
-#                     #   )
-#                     "module": "OpenStudioLandscapes.%s.definitions",
-#                     "compose_scope": ComposeScope.DEFAULT,
-#                     "feature_config": OpenStudioLandscapesConfig.DEFAULT,
-#                 }
-#             )\
-# """
-#         ) % (
-#             str(module_).replace("_", "-").replace(".constants", ""),
-#             str(module_).replace("-", "_").replace(".constants", "").upper(),
-#             str(module_).replace(".constants", ""),
-#         ),  # Todo: a bit hacky
-#         lang="python",
-#     )
-
     ## Testing
 
     doc.add_heading(
@@ -425,22 +533,6 @@ def _generator(
         ),
         lang="shell",
     )
-
-#     #### Generate Sphinx Documentation
-#
-#     doc.add_heading(
-#         text="Generate Sphinx Documentation",
-#         level=4,
-#     )
-#
-#     doc.add_code(
-#         code=textwrap.dedent(
-#             f"""\
-#             nox -v --add-timestamp --session docs\
-# """
-#         ),
-#         lang="shell",
-#     )
 
     #### Pylint
 
@@ -526,6 +618,7 @@ def _generator(
             "`pipdeptree` (Mermaid)",
         ]
     )
+
     doc.add_paragraph(
         text=textwrap.dedent(
             f"""
@@ -545,172 +638,20 @@ def _generator(
         # ]
     )
 
-    ## Configuration
-
-    doc.add_heading(
-        text="Configuration",
-        level=2,
-    )
+    doc.add_horizontal_rule()
 
     doc.add_paragraph(
         text=textwrap.dedent(
             f"""
-            The following settings are available in 
-            `OpenStudioLandscapes.{module_}` and are accessible 
-            throughout the [`{repo_}`]({gh_prefix}{gh_path_models}) package.
+            Last changed:
+            **{datetime.datetime.now(tz=datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S %Z')}**.
             """
         )
     )
-
-    CONFIG_STR: str = models.CONFIG_STR
-
-    doc.add_code(
-        code=CONFIG_STR,
-        lang="yaml",
-    )
-
-    # header = [
-    #     "Variable",
-    #     "Type"
-    # ]
-    #
-    # rows = []
-    #
-    # for var in constants.__all__:
-    #     val = constants.__dict__[var]
-    #
-    #     rows.append(
-    #         [
-    #             snakemd.Inline(
-    #                 text=var,
-    #             ).code(),
-    #             snakemd.Inline(
-    #                 text=type(val).__name__,
-    #             ).code(),
-    #         ]
-    #     )
-    #
-    # doc.add_table(
-    #     header=header,
-    #     data=rows,
-    #     align=[
-    #         snakemd.Table.Align.LEFT,
-    #         snakemd.Table.Align.LEFT,
-    #     ],
-    #     indent=0,
-    # )
-    #
-    # ### FEATURE_CONFIGS
-    #
-    # doc.add_heading(
-    #     text="Feature Configs",
-    #     level=3,
-    # )
-    #
-    # header_environment = [
-    #     "Variable",
-    #     "Type",
-    #     "Value"
-    # ]
-    #
-    # for k_feature_config, v_feature_config in constants.FEATURE_CONFIGS.items():
-    #
-    #     doc.add_heading(
-    #         text=f"Feature Config: {k_feature_config}",
-    #         level=4,
-    #     )
-    #
-    #     rows_environment = []
-    #
-    #     for k, v in v_feature_config.items():
-    #
-    #         rows_environment.append(
-    #             [
-    #                 snakemd.Inline(
-    #                     text=k,
-    #                 ).code(),
-    #                 snakemd.Inline(
-    #                     text=type(v).__name__,
-    #                 ).code(),
-    #                 snakemd.Inline(
-    #                     text=v,
-    #                 ).code(),
-    #             ]
-    #         )
-    #
-    #     doc.add_table(
-    #         header=header_environment,
-    #         data=rows_environment,
-    #         align=[
-    #             snakemd.Table.Align.LEFT,
-    #             snakemd.Table.Align.LEFT,
-    #             snakemd.Table.Align.LEFT,
-    #         ],
-    #         indent=0,
-    #     )
-
-    # Community
-
-    doc.add_heading(
-        text="Community",
-        level=1,
-    )
-
-    header = [
-        "Feature",
-        "GitHub",
-        "Discord",
-        # "Slack",
-    ]
-
-    rows = []
-
-    for feature, value in sorted(community_channels.items()):
-        if not value["enabled"]:
-            continue
-        if not value["public"]:
-            continue
-        github_ = value["github"]
-        discord_ = value["discord"]
-        # slack_ = value["slack"]
-        row = [
-            # module,
-            feature,
-            f"[{gh_prefix}{github_['repo_name']}]({gh_prefix}{github_['repo_name']})",  # github
-            f"[{discord_['channel_name']}]({discord_['invite']})",  # discord
-            # f"[{slack_['channel_name']}]({slack}/{slack_['channel_id']})"  # slack
-        ]
-
-        rows.append(row)
-
-    doc.add_table(
-        header=header,
-        data=rows,
-    )
-
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            f"""
-            To follow up on the previous LinkedIn publications, visit:
-            """
-        )
-    )
-
-    doc.add_unordered_list(
-        [
-            "[OpenStudioLandscapes on LinkedIn](https://www.linkedin.com/company/106731439/).",
-            "[Search for tag #OpenStudioLandscapes on LinkedIn](https://www.linkedin.com/search/results/all/?keywords=%23openstudiolandscapes).",
-        ]
-    )
-
-    # Inject Feature specific documentation if there is any
-    if readme_feature is not None:
-        doc.add_horizontal_rule()
-        doc = readme_feature.readme_feature(doc)
 
     # Dump
 
-    outfile = pathlib.Path(rel_path).parent.parent.parent.parent / "README"
+    outfile = pathlib.Path(rel_path).parent.parent.parent.parent.parent / "README"
 
     doc.dump(outfile.as_posix())
 

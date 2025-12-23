@@ -320,7 +320,6 @@ def _generator(
             doc=doc,
             main_header="External Resources",
         )
-        doc.add_horizontal_rule()
 
         _logger.info("Done.")
 

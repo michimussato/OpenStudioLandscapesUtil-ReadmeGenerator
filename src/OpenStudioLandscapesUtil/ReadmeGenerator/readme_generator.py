@@ -418,7 +418,8 @@ def _generator(
     doc.add_paragraph(
         text=textwrap.dedent(
             """
-            Clone this repository into `OpenStudioLandscapes/.features`:
+            Clone this repository into `OpenStudioLandscapes/.features` (assuming the 
+            current working directory to be the Git repository root `./OpenStudioLandscapes`):
             """
         )
     )
@@ -426,8 +427,7 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""\
-            # cd .features
-            git clone {gh_repo}\
+            git -C ./.features clone {gh_repo}\
 """
         ),
         lang="shell",
@@ -436,7 +436,7 @@ def _generator(
     doc.add_paragraph(
         text=textwrap.dedent(
             """
-            Create `venv`:
+            Install into OpenStudioLandscapes `venv` (`./OpenStudioLandscapes/.venv`):
             """
         )
     )
@@ -444,33 +444,33 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""\
-            # cd .features/{repo_}
-            python3.11 -m venv .venv
             source .venv/bin/activate
-            python -m pip install --upgrade pip setuptools\
-"""
-        ),
-        lang="shell",
-    )
-
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            """
-            Configure `venv`:
-            """
-        )
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            f"""\
-            # cd .features/{repo_}
-            pip install -e "../../[dev]"
+            python -m pip install --upgrade pip setuptools
+            pip install -e "./.features/{repo_}[dev]"
             pip install -e ".[dev]"\
 """
         ),
         lang="shell",
     )
+
+    # doc.add_paragraph(
+    #     text=textwrap.dedent(
+    #         """
+    #         Configure `venv`:
+    #         """
+    #     )
+    # )
+
+#     doc.add_code(
+#         code=textwrap.dedent(
+#             f"""\
+#             # cd .features/{repo_}
+#             pip install -e "../../[dev]"
+#             pip install -e ".[dev]"\
+# """
+#         ),
+#         lang="shell",
+#     )
 
     doc.add_paragraph(
         text=textwrap.dedent(

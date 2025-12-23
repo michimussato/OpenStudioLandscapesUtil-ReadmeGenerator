@@ -298,8 +298,7 @@ def _generator(
         text=textwrap.dedent(
             f"""
             The following settings are available in 
-            `{repo_}` and are accessible 
-            throughout the [`{repo_}`]({gh_prefix}{gh_path_models}) package.
+            `{repo_}` and are based on [`{gh_path_models}`]({gh_prefix}{gh_path_models}).
             """
         )
     )

@@ -442,11 +442,15 @@ def _generator(
 
     doc.add_code(
         code=textwrap.dedent(
+            # Todo
+            #  - [ ] installing a Feature removes the `openstudiolandscapes` from PATH for now
             f"""\
             source .venv/bin/activate
-            python -m pip install --upgrade pip setuptools
-            pip install -e "./.features/{repo_}[dev]"
-            pip install -e ".[dev]"\
+            # python -m pip install --upgrade pip setuptools
+            # the following removes the `openstudiolandscapes` executable for now (will be fixed soon)
+            pip install -e "./.features/{repo_}"
+            # so, re-install `OpenStudioLandscapes` engine:
+            pip install -e "."\
 """
         ),
         lang="shell",

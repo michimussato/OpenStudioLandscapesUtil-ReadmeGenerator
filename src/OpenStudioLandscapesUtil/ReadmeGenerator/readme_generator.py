@@ -426,7 +426,9 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""\
-            git -C ./.features clone {gh_repo}\
+            git -C ./.features clone {gh_repo}
+            # git -C ./.features/{repo_} branch -a
+            # git -C ./.features/{repo_} checkout <branch>\
 """
         ),
         lang="shell",

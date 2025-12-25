@@ -427,6 +427,7 @@ def _generator(
         code=textwrap.dedent(
             f"""\
             git -C ./.features clone {gh_repo}
+            # Check out a specific branch by:
             # git -C ./.features/{repo_} branch -a
             # git -C ./.features/{repo_} checkout <branch>\
 """

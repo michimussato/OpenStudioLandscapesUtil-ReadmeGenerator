@@ -370,11 +370,16 @@ def _generator(
         )
     )
 
+    doc.add_heading(
+        text="Default Configuration",
+        level=3,
+    )
+
     doc.add_raw(
         text=textwrap.dedent(
             """
             <details>
-            <summary>Default Configuration (click to expand)</summary>
+            <summary(click to expand)</summary>
             """
         )
     )

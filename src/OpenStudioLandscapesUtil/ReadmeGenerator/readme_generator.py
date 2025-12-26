@@ -379,7 +379,7 @@ def _generator(
         text=textwrap.dedent(
             """
             <details>
-            <summary(click to expand)</summary>
+            <summary><code>config.yml</code> (click to expand)</summary>
             """
         )
     )

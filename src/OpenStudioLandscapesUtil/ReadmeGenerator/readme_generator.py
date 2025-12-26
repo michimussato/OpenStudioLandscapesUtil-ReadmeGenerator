@@ -267,8 +267,10 @@ def _generator(
             f"""\
             git -C ./.features clone {gh_repo}
             # Check out a specific branch with:
-            # List branches: git -C ./.features/{repo_} branch -a
-            # Checkout branch: git -C ./.features/{repo_} checkout <branch>\
+            # List branches: 
+            # git -C ./.features/{repo_} branch -a
+            # Checkout branch: 
+            # git -C ./.features/{repo_} checkout <branch>\
 """
         ),
         lang="shell",

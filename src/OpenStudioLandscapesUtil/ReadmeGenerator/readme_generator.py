@@ -375,11 +375,13 @@ def _generator(
         level=3,
     )
 
+
+    # Expandable `config.yml` section
     doc.add_raw(
         text=textwrap.dedent(
             """
             <details>
-            <summary><code>config.yml</code> (click to expand)</summary>
+            <summary><code>config.yml</code></summary>
             """
         )
     )

@@ -239,10 +239,77 @@ def _generator(
         )
     )
 
-    ## Configuration
+    ## Install
 
     doc.add_heading(
-        text="Configuration",
+        text="Install",
+        level=2,
+    )
+
+    # ### This Feature
+    #
+    # doc.add_heading(
+    #     text="This Feature",
+    #     level=3,
+    # )
+
+    doc.add_paragraph(
+        text=textwrap.dedent(
+            """
+            Clone this repository into `OpenStudioLandscapes/.features` (assuming the 
+            current working directory to be the Git repository root `./OpenStudioLandscapes`):
+            """
+        )
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            f"""\
+            git -C ./.features clone {gh_repo}
+            # Check out a specific branch with:
+            # List branches: git -C ./.features/{repo_} branch -a
+            # Checkout branch: git -C ./.features/{repo_} checkout <branch>\
+"""
+        ),
+        lang="shell",
+    )
+
+    doc.add_paragraph(
+        text=textwrap.dedent(
+            """
+            Install into OpenStudioLandscapes `venv` (`./OpenStudioLandscapes/.venv`):
+            """
+        )
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            # Todo
+            #  - [ ] installing a Feature removes the `openstudiolandscapes` from PATH for now
+            f"""\
+            source .venv/bin/activate
+            # python -m pip install --upgrade pip setuptools
+            # the following removes the `openstudiolandscapes` executable for now (will be fixed soon)
+            pip install -e "./.features/{repo_}"
+            # so, re-install `OpenStudioLandscapes` engine:
+            pip install -e "."\
+"""
+        ),
+        lang="shell",
+    )
+
+    doc.add_paragraph(
+        text=textwrap.dedent(
+            """
+            For more info on `pip` see [VCS Support of `pip`](https://pip.pypa.io/en/stable/topics/vcs-support/).
+            """
+        )
+    )
+
+    ## Configure
+
+    doc.add_heading(
+        text="Configure",
         level=2,
     )
 
@@ -303,9 +370,26 @@ def _generator(
         )
     )
 
+    doc.add_raw(
+        text=textwrap.dedent(
+            """
+            <details>
+            <summary>Default Configuration (click to expand)</summary>
+            """
+        )
+    )
+
     doc.add_code(
         code=models.CONFIG_STR,
         lang="yaml",
+    )
+
+    doc.add_raw(
+        text=textwrap.dedent(
+            """
+            </details>
+            """
+        )
     )
 
     doc.add_horizontal_rule()
@@ -379,287 +463,205 @@ def _generator(
 
     doc.add_horizontal_rule()
 
-    # Technical Reference
-
-    doc.add_heading(
-        text="Technical Reference",
-        level=1,
-    )
-
-    ## Requirements
-
-    doc.add_heading(
-        text="Requirements",
-        level=2,
-    )
-
-    doc.add_unordered_list(
-        [
-            "`python-3.11`",
-            "`OpenStudioLandscapes`",
-        ]
-    )
-
-    ## Install
-
-    doc.add_heading(
-        text="Install",
-        level=2,
-    )
-
-    ### This Feature
-
-    doc.add_heading(
-        text="This Feature",
-        level=3,
-    )
-
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            """
-            Clone this repository into `OpenStudioLandscapes/.features` (assuming the 
-            current working directory to be the Git repository root `./OpenStudioLandscapes`):
-            """
-        )
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            f"""\
-            git -C ./.features clone {gh_repo}
-            # Check out a specific branch by:
-            # git -C ./.features/{repo_} branch -a
-            # git -C ./.features/{repo_} checkout <branch>\
-"""
-        ),
-        lang="shell",
-    )
-
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            """
-            Install into OpenStudioLandscapes `venv` (`./OpenStudioLandscapes/.venv`):
-            """
-        )
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            # Todo
-            #  - [ ] installing a Feature removes the `openstudiolandscapes` from PATH for now
-            f"""\
-            source .venv/bin/activate
-            # python -m pip install --upgrade pip setuptools
-            # the following removes the `openstudiolandscapes` executable for now (will be fixed soon)
-            pip install -e "./.features/{repo_}"
-            # so, re-install `OpenStudioLandscapes` engine:
-            pip install -e "."\
-"""
-        ),
-        lang="shell",
-    )
-
-    # doc.add_paragraph(
-    #     text=textwrap.dedent(
-    #         """
-    #         Configure `venv`:
-    #         """
-    #     )
-    # )
-
+    # Todo
+    #  - [ ] refactor Technical Reference. Disabled for now to keep it less distracting.
+#     # Technical Reference
+#
+#     doc.add_heading(
+#         text="Technical Reference",
+#         level=1,
+#     )
+#
+#     ## Requirements
+#
+#     doc.add_heading(
+#         text="Requirements",
+#         level=2,
+#     )
+#
+#     doc.add_unordered_list(
+#         [
+#             "`python-3.11`",
+#             "`OpenStudioLandscapes`",
+#         ]
+#     )
+#
+#     ## Testing
+#
+#     doc.add_heading(
+#         text="Testing",
+#         level=2,
+#     )
+#
+#     ### pre-commit
+#
+#     doc.add_heading(
+#         text="pre-commit",
+#         level=3,
+#     )
+#
+#     doc.add_unordered_list(
+#         [
+#             "https://pre-commit.com",
+#             "https://pre-commit.com/hooks.html",
+#         ]
+#     )
+#
 #     doc.add_code(
 #         code=textwrap.dedent(
 #             f"""\
-#             # cd .features/{repo_}
-#             pip install -e "../../[dev]"
-#             pip install -e ".[dev]"\
+#             pre-commit install\
 # """
 #         ),
 #         lang="shell",
 #     )
+#
+#     ### nox
+#
+#     doc.add_heading(
+#         text="nox",
+#         level=3,
+#     )
+#
+#     #### Generate Report
+#
+#     doc.add_heading(
+#         text="Generate Report",
+#         level=4,
+#     )
+#
+#     doc.add_code(
+#         code=textwrap.dedent(
+#             f"""\
+#             nox --no-error-on-missing-interpreters --report .nox/nox-report.json\
+# """
+#         ),
+#         lang="shell",
+#     )
+#
+#     #### Re-Generate this README
+#
+#     doc.add_heading(
+#         text="Re-Generate this README",
+#         level=4,
+#     )
+#
+#     doc.add_code(
+#         code=textwrap.dedent(
+#             f"""\
+#             nox -v --add-timestamp --session readme\
+# """
+#         ),
+#         lang="shell",
+#     )
+#
+#     #### Pylint
+#
+#     doc.add_heading(
+#         text="pylint",
+#         level=4,
+#     )
+#
+#     doc.add_code(
+#         code=textwrap.dedent(
+#             f"""\
+#             nox -v --add-timestamp --session lint\
+# """
+#         ),
+#         lang="shell",
+#     )
+#
+#     doc.add_heading(
+#         text="pylint: disable=redefined-outer-name",
+#         level=5,
+#     )
+#
+#     doc.add_unordered_list(
+#         [
+#             "[`W0621`](https://pylint.pycqa.org/en/latest/user_guide/messages/warning/redefined-outer-name.html): Due to Dagsters way of piping arguments into assets.",
+#         ]
+#     )
+#
+#     #### SBOM
+#
+#     doc.add_heading(
+#         text="SBOM",
+#         level=4,
+#     )
+#
+#     doc.add_paragraph(
+#         text=textwrap.dedent(
+#             """
+#             Acronym for Software Bill of Materials
+#             """
+#         )
+#     )
+#
+#     doc.add_code(
+#         code=textwrap.dedent(
+#             f"""\
+#             nox -v --add-timestamp --session sbom\
+# """
+#         ),
+#         lang="shell",
+#     )
+#
+#     doc.add_paragraph(
+#         text=textwrap.dedent(
+#             """
+#             We create the following SBOMs:
+#             """
+#         )
+#     )
+#
+#     doc.add_unordered_list(
+#         [
+#             "[`cyclonedx-bom`](https://pypi.org/project/cyclonedx-bom/)",
+#             "[`pipdeptree`](https://pypi.org/project/pipdeptree/) (Dot)",
+#             "[`pipdeptree`](https://pypi.org/project/pipdeptree/) (Mermaid)",
+#         ]
+#     )
+#
+#     doc.add_paragraph(
+#         text=textwrap.dedent(
+#             f"""
+#             SBOMs for the different Python interpreters defined in [`.noxfile.VERSIONS`]({gh_prefix}{gh_path_noxfile})
+#             will be created in the [`.sbom`]({gh_prefix}{gh_path_sbom}) directory of
+#             this repository.
+#             """
+#         )
+#     )
+#
+#     doc.add_unordered_list(
+#         [
+#             "`cyclone-dx`",
+#             "`pipdeptree` (Dot)",
+#             "`pipdeptree` (Mermaid)",
+#         ]
+#     )
+#
+#     doc.add_paragraph(
+#         text=textwrap.dedent(
+#             f"""
+#             Currently, the following Python interpreters are enabled for testing:
+#             """
+#         )
+#     )
+#
+#     # Todo
+#     #  - [x] make this dynamic (could be achieved by packaging this up into a CLI and then
+#     #        call it from nox)
+#     doc.add_unordered_list(
+#         sorted([f"`python{i}`" for i in python_versions])
+#         # [
+#         #     "`python3.11`",
+#         #     "`python3.12`",
+#         # ]
+#     )
+#
+#     doc.add_horizontal_rule()
 
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            """
-            For more info see [VCS Support of pip](https://pip.pypa.io/en/stable/topics/vcs-support/).
-            """
-        )
-    )
-
-    ## Testing
-
-    doc.add_heading(
-        text="Testing",
-        level=2,
-    )
-
-    ### pre-commit
-
-    doc.add_heading(
-        text="pre-commit",
-        level=3,
-    )
-
-    doc.add_unordered_list(
-        [
-            "https://pre-commit.com",
-            "https://pre-commit.com/hooks.html",
-        ]
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            f"""\
-            pre-commit install\
-"""
-        ),
-        lang="shell",
-    )
-
-    ### nox
-
-    doc.add_heading(
-        text="nox",
-        level=3,
-    )
-
-    #### Generate Report
-
-    doc.add_heading(
-        text="Generate Report",
-        level=4,
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            f"""\
-            nox --no-error-on-missing-interpreters --report .nox/nox-report.json\
-"""
-        ),
-        lang="shell",
-    )
-
-    #### Re-Generate this README
-
-    doc.add_heading(
-        text="Re-Generate this README",
-        level=4,
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            f"""\
-            nox -v --add-timestamp --session readme\
-"""
-        ),
-        lang="shell",
-    )
-
-    #### Pylint
-
-    doc.add_heading(
-        text="pylint",
-        level=4,
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            f"""\
-            nox -v --add-timestamp --session lint\
-"""
-        ),
-        lang="shell",
-    )
-
-    doc.add_heading(
-        text="pylint: disable=redefined-outer-name",
-        level=5,
-    )
-
-    doc.add_unordered_list(
-        [
-            "[`W0621`](https://pylint.pycqa.org/en/latest/user_guide/messages/warning/redefined-outer-name.html): Due to Dagsters way of piping arguments into assets.",
-        ]
-    )
-
-    #### SBOM
-
-    doc.add_heading(
-        text="SBOM",
-        level=4,
-    )
-
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            """
-            Acronym for Software Bill of Materials
-            """
-        )
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            f"""\
-            nox -v --add-timestamp --session sbom\
-"""
-        ),
-        lang="shell",
-    )
-
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            """
-            We create the following SBOMs:
-            """
-        )
-    )
-
-    doc.add_unordered_list(
-        [
-            "[`cyclonedx-bom`](https://pypi.org/project/cyclonedx-bom/)",
-            "[`pipdeptree`](https://pypi.org/project/pipdeptree/) (Dot)",
-            "[`pipdeptree`](https://pypi.org/project/pipdeptree/) (Mermaid)",
-        ]
-    )
-
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            f"""
-            SBOMs for the different Python interpreters defined in [`.noxfile.VERSIONS`]({gh_prefix}{gh_path_noxfile}) 
-            will be created in the [`.sbom`]({gh_prefix}{gh_path_sbom}) directory of
-            this repository.
-            """
-        )
-    )
-
-    doc.add_unordered_list(
-        [
-            "`cyclone-dx`",
-            "`pipdeptree` (Dot)",
-            "`pipdeptree` (Mermaid)",
-        ]
-    )
-
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            f"""
-            Currently, the following Python interpreters are enabled for testing:
-            """
-        )
-    )
-
-    # Todo
-    #  - [x] make this dynamic (could be achieved by packaging this up into a CLI and then
-    #        call it from nox)
-    doc.add_unordered_list(
-        sorted([f"`python{i}`" for i in python_versions])
-        # [
-        #     "`python3.11`",
-        #     "`python3.12`",
-        # ]
-    )
-
-    doc.add_horizontal_rule()
+    # Last Changed
 
     doc.add_paragraph(
         text=textwrap.dedent(

@@ -445,7 +445,6 @@ def _generator(
             feature,
             f"[{gh_prefix}{github_['repo_name']}]({gh_prefix}{github_['repo_name']})",  # github
             f"[{discord_['channel_name']}]({discord_['invite']})",  # discord
-            # f"[{slack_['channel_name']}]({slack}/{slack_['channel_id']})"  # slack
         ]
 
         rows.append(row)

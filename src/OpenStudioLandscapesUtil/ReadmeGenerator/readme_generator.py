@@ -99,17 +99,17 @@ def generate_readme(
 
     try:
         models = importlib.import_module(f"{namespace}.{package}.config.models")
+    except PackageNotFoundError as e:
+        _logger.exception(f"Package OpenStudioLandscapes not found:\n"
+                          f"{e = }\n"
+                          f"{namespace = }\n"
+                          f"{package = }")
     except ModuleNotFoundError as e:
         _logger.exception(f"Module OpenStudioLandscapes not found:\n"
                           f"{e = }\n"
                           f"{namespace = }\n"
                           f"{package = }")
         raise e
-    except PackageNotFoundError as e:
-        _logger.exception(f"Package OpenStudioLandscapes not found:\n"
-                          f"{e = }\n"
-                          f"{namespace = }\n"
-                          f"{package = }")
         # continue
 
     try:

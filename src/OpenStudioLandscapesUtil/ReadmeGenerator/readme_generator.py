@@ -94,23 +94,22 @@ def generate_readme(
     # something like: ["OpenStudioLandscapes.Ayon"]
     namespace, package = toml_dict["tool"]["setuptools"]["packages"][0].split(".")
 
-    _logger.debug(f"{namespace = }")
-    _logger.debug(f"{package = }")
+    _logger.error(f"{namespace = }")
+    _logger.error(f"{package = }")
 
     try:
         models = importlib.import_module(f"{namespace}.{package}.config.models")
-    except PackageNotFoundError as e:
-        _logger.exception(f"Package OpenStudioLandscapes not found:\n"
-                          f"{e = }\n"
-                          f"{namespace = }\n"
-                          f"{package = }")
+    # except PackageNotFoundError as e:
+    #     _logger.exception(f"Package OpenStudioLandscapes not found:\n"
+    #                       f"{e = }\n"
+    #                       f"{namespace = }\n"
+    #                       f"{package = }")
     except ModuleNotFoundError as e:
         _logger.exception(f"Module OpenStudioLandscapes not found:\n"
                           f"{e = }\n"
                           f"{namespace = }\n"
                           f"{package = }")
         raise e
-        # continue
 
     try:
         readme_feature = importlib.import_module(f"{namespace}.{package}.doc.readme")

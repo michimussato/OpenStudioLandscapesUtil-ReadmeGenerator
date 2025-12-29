@@ -35,6 +35,7 @@ import datetime
 import logging
 import pathlib
 import tomllib
+from importlib.metadata import PackageNotFoundError
 from types import ModuleType
 from typing import Union, List
 
@@ -104,6 +105,12 @@ def generate_readme(
                           f"{namespace = }\n"
                           f"{package = }")
         raise e
+    except PackageNotFoundError as e:
+        _logger.exception(f"Package OpenStudioLandscapes not found:\n"
+                          f"{e = }\n"
+                          f"{namespace = }\n"
+                          f"{package = }")
+        # continue
 
     try:
         readme_feature = importlib.import_module(f"{namespace}.{package}.doc.readme")

@@ -359,7 +359,7 @@ def _generator(
             [!TIP]
             
             To specify a config store location different than
-            the default, you can do so be setting the environment variable
+            the default, you can do so by setting the environment variable
             `OPENSTUDIOLANDSCAPES__CONFIGSTORE_ROOT`:
             
             ```shell

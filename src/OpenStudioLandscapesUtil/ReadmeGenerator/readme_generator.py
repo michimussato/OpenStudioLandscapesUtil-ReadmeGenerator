@@ -271,41 +271,37 @@ def _generator(
     doc.add_code(
         code=textwrap.dedent(
             f"""\
-            git -C ./.features clone {gh_repo}
-            # Check out a specific branch with:
-            # List branches: 
-            # git -C ./.features/{repo_} branch -a
-            # Checkout branch: 
-            # git -C ./.features/{repo_} checkout <branch>\
-"""
-        ),
-        lang="shell",
-    )
-
-    doc.add_paragraph(
-        text=textwrap.dedent(
-            """
-            Install into OpenStudioLandscapes `venv` (`./OpenStudioLandscapes/.venv`):
-            """
-        )
-    )
-
-    doc.add_code(
-        code=textwrap.dedent(
-            # Todo
-            #  - [ ] installing a Feature removes the `openstudiolandscapes` from PATH for now
-            #  - [ ] maybe use `openstudiolandscapes install-feature --path=URL`
-            f"""\
+            # cd OpenStudioLandscapes
             source .venv/bin/activate
-            # python -m pip install --upgrade pip setuptools
-            # the following removes the `openstudiolandscapes` executable for now (will be fixed soon)
-            pip install -e "./.features/{repo_}"
-            # so, re-install `OpenStudioLandscapes` engine:
-            pip install -e "."\
+            openstudiolandscapes install-feature --repo={gh_repo}
+            # Check the resulting console output for installation instructions
 """
         ),
         lang="shell",
     )
+
+#     doc.add_paragraph(
+#         text=textwrap.dedent(
+#             """
+#             Install into OpenStudioLandscapes `venv` (`./OpenStudioLandscapes/.venv`):
+#             """
+#         )
+#     )
+#
+#     doc.add_code(
+#         code=textwrap.dedent(
+#             # Todo
+#             #  - [ ] installing a Feature removes the `openstudiolandscapes` from PATH for now
+#             #  - [ ] maybe use `openstudiolandscapes install-feature --path=URL`
+#             f"""\
+#             # cd OpenStudioLandscapes
+#             source .venv/bin/activate
+#             # python -m pip install --upgrade pip setuptools
+#             pip install -e "./.features/{repo_}"
+# """
+#         ),
+#         lang="shell",
+#     )
 
     doc.add_paragraph(
         text=textwrap.dedent(

@@ -294,6 +294,7 @@ def _generator(
         code=textwrap.dedent(
             # Todo
             #  - [ ] installing a Feature removes the `openstudiolandscapes` from PATH for now
+            #  - [ ] maybe use `openstudiolandscapes install-feature --path=URL`
             f"""\
             source .venv/bin/activate
             # python -m pip install --upgrade pip setuptools
@@ -331,12 +332,24 @@ def _generator(
         )
     )
 
+    doc.add_quote(
+        text=textwrap.dedent(
+            """\
+            [!TIP]
+            
+            To specify a config store location different from
+            the default location, check out the OpenStudioLandscapes 
+            [CLI Section](https://github.com/michimussato/OpenStudioLandscapes#cli)
+            to find out how to do that.
+            """
+        )
+    )
+
     doc.add_paragraph(
         text=textwrap.dedent(
             """
             A local config store location will be created if it doesn't exist, 
-            together with the `config.yml` files for each
-            individual Feature.
+            together with the `config.yml` files for each individual Feature.
             """
         )
     )
@@ -353,21 +366,8 @@ def _generator(
         )
     )
 
-    doc.add_quote(
-        text=textwrap.dedent(
-            """\
-            [!TIP]
-            
-            To specify a config store location different than
-            the default, you can do so by setting the environment variable
-            `OPENSTUDIOLANDSCAPES__CONFIGSTORE_ROOT`:
-            
-            ```shell
-            OPENSTUDIOLANDSCAPES__CONFIGSTORE_ROOT="~/.config/OpenStudioLandscapes/my-custom-config-store"
-            ```
-            """
-        )
-    )
+    # Todo
+    #  - [ ] How to track config store updates when the Git repo is only initialized once?
 
     doc.add_paragraph(
         text=textwrap.dedent(

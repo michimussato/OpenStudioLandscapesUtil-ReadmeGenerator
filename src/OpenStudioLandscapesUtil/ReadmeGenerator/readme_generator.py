@@ -379,29 +379,28 @@ def _generator(
         level=3,
     )
 
-
-    # # Expandable `config.yml` section
-    # doc.add_raw(
-    #     text=textwrap.dedent(
-    #         """
-    #         <details>
-    #         <summary><code>config.yml</code></summary>
-    #         """
-    #     )
-    # )
+    # Expandable `config.yml` section
+    doc.add_raw(
+        text=textwrap.dedent(
+            """
+            <details open>
+            <summary><code>config.yml</code></summary>
+            """
+        )
+    )
 
     doc.add_code(
         code=models.CONFIG_STR,
         lang=["generic", "yaml"][1],
     )
 
-    # doc.add_raw(
-    #     text=textwrap.dedent(
-    #         """
-    #         </details>
-    #         """
-    #     )
-    # )
+    doc.add_raw(
+        text=textwrap.dedent(
+            """
+            </details>
+            """
+        )
+    )
 
     doc.add_horizontal_rule()
 

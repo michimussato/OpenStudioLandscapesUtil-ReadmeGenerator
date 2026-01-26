@@ -392,7 +392,7 @@ def _generator(
 
     doc.add_code(
         code=models.CONFIG_STR,
-        lang="yaml",
+        lang=["generic", "yaml"][0],
     )
 
     doc.add_raw(

@@ -273,7 +273,7 @@ def _generator(
             f"""\
             # cd OpenStudioLandscapes
             source .venv/bin/activate
-            openstudiolandscapes install-feature --repo={gh_repo}
+            openstudiolandscapes clone-feature --repo={gh_repo}
             # Check the resulting console output for installation instructions
 """
         ),
@@ -291,8 +291,8 @@ def _generator(
 #     doc.add_code(
 #         code=textwrap.dedent(
 #             # Todo
-#             #  - [ ] installing a Feature removes the `openstudiolandscapes` from PATH for now
-#             #  - [ ] maybe use `openstudiolandscapes install-feature --path=URL`
+#             #  - [x] installing a Feature removes the `openstudiolandscapes` from PATH for now
+#             #  - [x] maybe use `openstudiolandscapes clone-feature --path=URL`
 #             f"""\
 #             # cd OpenStudioLandscapes
 #             source .venv/bin/activate

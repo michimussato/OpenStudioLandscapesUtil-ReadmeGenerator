@@ -245,10 +245,10 @@ def _generator(
         )
     )
 
-    ## Install
+    ## Clone
 
     doc.add_heading(
-        text="Install",
+        text="Clone",
         level=2,
     )
 
@@ -274,7 +274,28 @@ def _generator(
             # cd OpenStudioLandscapes
             source .venv/bin/activate
             openstudiolandscapes clone-feature --repo={gh_repo}
+            deactivate
             # Check the resulting console output for installation instructions
+"""
+        ),
+        lang="shell",
+    )
+
+    ## Clone and Install
+
+    doc.add_heading(
+        text="Clone and Install",
+        level=3,
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            f"""\
+            # cd OpenStudioLandscapes
+            source .venv/bin/activate
+            openstudiolandscapes clone-feature --repo={gh_repo} \\
+                && pip install --editable ./.features/{repo_}
+            deactivate
 """
         ),
         lang="shell",

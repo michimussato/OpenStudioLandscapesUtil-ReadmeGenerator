@@ -275,7 +275,7 @@ def _generator(
             source .venv/bin/activate
             openstudiolandscapes clone-feature --repo={gh_repo}
             deactivate
-            # Check the resulting console output for installation instructions
+            # Check the resulting console output for installation instructions\
 """
         ),
         lang="shell",
@@ -295,7 +295,7 @@ def _generator(
             source .venv/bin/activate
             openstudiolandscapes clone-feature --repo={gh_repo} \\
                 && pip install --editable ./.features/{repo_}
-            deactivate
+            deactivate\
 """
         ),
         lang="shell",
@@ -403,7 +403,7 @@ def _generator(
     # Expandable `config.yml` section
     doc.add_raw(
         text=textwrap.dedent(
-            """
+            """\
             <details open>
             <summary><code>config.yml</code></summary>
             """
@@ -417,10 +417,29 @@ def _generator(
 
     doc.add_raw(
         text=textwrap.dedent(
-            """
+            """\
             </details>
             """
         )
+    )
+
+    doc.add_heading(
+        text="Local Development",
+        level=2,
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            f"""\
+            cd ./.features/{repo_}
+            python3.11 -m venv .venv
+            source .venv/bin/activate
+            pip install --upgrade pip setuptools setuptools_scm wheel
+            pip install --editable .[dev]
+            dagster dev --workspace workspace.yaml
+"""
+        ),
+        lang="shell",
     )
 
     doc.add_horizontal_rule()

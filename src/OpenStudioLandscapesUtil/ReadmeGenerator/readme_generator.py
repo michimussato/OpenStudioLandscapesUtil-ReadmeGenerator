@@ -436,7 +436,7 @@ def _generator(
             source .venv/bin/activate
             pip install --upgrade pip setuptools setuptools_scm wheel
             pip install --editable .[dev]
-            dagster dev --workspace workspace.yaml
+            dagster dev --workspace workspace.yaml\
 """
         ),
         lang="shell",

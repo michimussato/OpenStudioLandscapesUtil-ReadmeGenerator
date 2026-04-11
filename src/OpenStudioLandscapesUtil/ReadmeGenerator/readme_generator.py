@@ -150,10 +150,38 @@ def _generator(
         repo_,
         "tree",
         "main",
-        parts_[-4],
-        parts_[-3],
-        module_,
-        file_
+        parts_[-5],  # src
+        parts_[-4],  # OpenStudioLandscapes
+        parts_[-3],  # Syncthing
+        module_,     # config
+        file_        # models.py
+    ])
+
+    gh_path_definitions = "/".join([
+        repo_,
+        "tree",
+        "main",
+        parts_[-5],  # src
+        parts_[-4],  # OpenStudioLandscapes
+        parts_[-3],  # Syncthing
+        "definitions.py",
+    ])
+
+    gh_path_definitions_with_upstream_specs = "/".join([
+        repo_,
+        "tree",
+        "main",
+        parts_[-5],  # src
+        parts_[-4],  # OpenStudioLandscapes
+        parts_[-3],  # Syncthing
+        "_definitions_with_upstream_specs.py",
+    ])
+
+    gh_path_workspace = "/".join([
+        repo_,
+        "tree",
+        "main",
+        "workspace.yaml",
     ])
 
     # gh_path_noxfile = "/".join([
@@ -424,14 +452,32 @@ def _generator(
     )
 
     doc.add_heading(
-        text="Local Development",
+        text="Local Development/Unit Testing/Debugging",
         level=2,
+    )
+
+    doc.add_paragraph(
+        text=textwrap.dedent(
+            f"""\
+            The following settings are available in 
+            `{repo_}` and are based on [`{gh_path_models}`]({gh_prefix}{gh_path_models}).
+            
+            This is for isolated development, unit testing and debugging.
+            Instead of the [`{gh_path_definitions}`]({gh_prefix}{gh_path_definitions}), 
+            the accompanying [`{gh_path_workspace}`]({gh_prefix}{gh_path_workspace}) loads 
+            the [`{gh_path_definitions_with_upstream_specs}`]({gh_prefix}{gh_path_definitions_with_upstream_specs}) 
+            which also contains 
+            [`AssetSpec`](https://release-1-9-13.archive.dagster-docs.io/api/dagster/assets#dagster.AssetSpec)
+            definitions for upstream dependencies as 
+            [external assets](https://release-1-9-13.archive.dagster-docs.io/guides/build/assets/external-assets).
+            """
+        )
     )
 
     doc.add_code(
         code=textwrap.dedent(
             f"""\
-            cd ./.features/{repo_}
+            # cd ./.features/{repo_}
             python3.11 -m venv .venv
             source .venv/bin/activate
             pip install --upgrade pip setuptools setuptools_scm wheel

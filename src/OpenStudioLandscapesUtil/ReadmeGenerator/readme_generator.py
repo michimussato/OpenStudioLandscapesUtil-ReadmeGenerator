@@ -459,9 +459,6 @@ def _generator(
     doc.add_paragraph(
         text=textwrap.dedent(
             f"""\
-            The following settings are available in 
-            `{repo_}` and are based on [`{gh_path_models}`]({gh_prefix}{gh_path_models}).
-            
             This is for isolated development, unit testing and debugging.
             Instead of the [`{gh_path_definitions}`]({gh_prefix}{gh_path_definitions}), 
             the accompanying [`{gh_path_workspace}`]({gh_prefix}{gh_path_workspace}) loads 

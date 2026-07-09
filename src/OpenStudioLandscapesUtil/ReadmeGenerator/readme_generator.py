@@ -309,6 +309,27 @@ def _generator(
         lang="shell",
     )
 
+    doc.add_paragraph(
+        text=textwrap.dedent(
+            """
+            If Feature repository was cloned locally already:
+            """
+        )
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            f"""\
+            # cd OpenStudioLandscapes
+            source .venv/bin/activate
+            pip install --editable ./.features/<Feature>
+            deactivate
+            # Check the resulting console output for installation instructions\
+"""
+        ),
+        lang="shell",
+    )
+
     ## Clone and Install
 
     doc.add_heading(
@@ -321,8 +342,24 @@ def _generator(
             f"""\
             # cd OpenStudioLandscapes
             source .venv/bin/activate
-            openstudiolandscapes clone-feature --repo={gh_repo} \\
-                && pip install --editable ./.features/{repo_}
+            openstudiolandscapes clone-feature --repo={gh_repo} --install
+            deactivate\
+"""
+        ),
+        lang="shell",
+    )
+
+    doc.add_heading(
+        text="Uninstall",
+        level=3,
+    )
+
+    doc.add_code(
+        code=textwrap.dedent(
+            f"""\
+            # cd OpenStudioLandscapes
+            source .venv/bin/activate
+            pip uninstall {repo_}
             deactivate\
 """
         ),

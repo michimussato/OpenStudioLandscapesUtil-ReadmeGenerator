@@ -515,7 +515,7 @@ def _generator(
             python3.11 -m venv .venv
             source .venv/bin/activate
             pip install --upgrade pip setuptools setuptools_scm wheel
-            pip install --editable .[dev]
+            pip install --editable ".[dev]"
             dagster dev --workspace workspace.yaml\
 """
         ),
